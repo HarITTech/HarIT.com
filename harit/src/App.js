@@ -14,7 +14,7 @@ import {
   FaLinkedinIn,
   FaInstagram,
 } from "react-icons/fa";
-import logo from './Harit.png';
+import logo from "./Harit.png";
 
 const App = () => {
   return (
@@ -50,7 +50,9 @@ const App = () => {
         {/* Service 2 */}
         <div className="inset-0 bg-white border-[1px] cursor-pointer text-gray-500 hover:border-green-500 hover:text-green-500 border-gray-300 bg-opacity-20 backdrop-blur-sm shadow-2xl rounded-lg p-8 flex flex-col items-center hover:scale-105 transition-transform">
           <FaMobileAlt className="text-6xl mb-2" />
-          <h2 className="text-xl font-semibold text-center">Mobile App Development</h2>
+          <h2 className="text-xl font-semibold text-center">
+            Mobile App Development
+          </h2>
         </div>
 
         {/* Service 3 */}
@@ -68,7 +70,9 @@ const App = () => {
         {/* Service 5 */}
         <div className="inset-0 bg-white border-[1px] cursor-pointer text-gray-500 hover:border-orange-500 hover:text-orange-500 border-gray-300 bg-opacity-20 backdrop-blur-sm shadow-2xl rounded-lg p-8 flex flex-col items-center hover:scale-105 transition-transform">
           <FaChartLine className="text-6xl mb-2" />
-          <h2 className="text-xl font-semibold text-center">Digital Marketing</h2>
+          <h2 className="text-xl font-semibold text-center">
+            Digital Marketing
+          </h2>
         </div>
 
         {/* Service 6 */}
@@ -80,31 +84,38 @@ const App = () => {
         {/* Service 7 */}
         <div className="inset-0 bg-white border-[1px] cursor-pointer text-gray-500 hover:border-yellow-500 hover:text-yellow-500 border-gray-300 bg-opacity-20 backdrop-blur-sm shadow-2xl rounded-lg p-8 flex flex-col items-center hover:scale-105 transition-transform">
           <FaDatabase className="text-6xl mb-2" />
-          <h2 className="text-xl font-semibold text-center">Database Management</h2>
+          <h2 className="text-xl font-semibold text-center">
+            Database Management
+          </h2>
         </div>
 
         {/* Service 8 */}
         <div className="inset-0 bg-white border-[1px] cursor-pointer text-gray-500 hover:border-teal-500 hover:text-teal-500 border-gray-300 bg-opacity-20 backdrop-blur-sm shadow-2xl rounded-lg p-8 flex flex-col items-center hover:scale-105 transition-transform">
           <FaServer className="text-6xl mb-2" />
-          <h2 className="text-xl font-semibold text-center">Server Management</h2>
+          <h2 className="text-xl font-semibold text-center">
+            Server Management
+          </h2>
         </div>
 
         {/* Service 9 */}
         <div className="inset-0 bg-white border-[1px] cursor-pointer text-gray-500 hover:border-cyan-500 hover:text-cyan-500 border-gray-300 bg-opacity-20 backdrop-blur-sm shadow-2xl rounded-lg p-8 flex flex-col items-center hover:scale-105 transition-transform">
           <FaSearchDollar className="text-6xl mb-2" />
-          <h2 className="text-xl font-semibold text-center">SEO Optimization</h2>
+          <h2 className="text-xl font-semibold text-center">
+            SEO Optimization
+          </h2>
         </div>
       </section>
 
       {/* Footer Section */}
       <footer className="mt-16 text-center mb-7 text-gray-600 text-sm font-semibold">
-        <p className="text-center mb-4 font-semibold text-gray-700">
-          Contact Us:{" "}
-          <a href="info@harittech.com"
-          className="text-md ml-1 font-bold hover:text-blue-600 text-gray-800 drop-shadow-lg">
-            info@harittech.com
-          </a>
-        </p>
+        <a
+          href="https://mail.google.com/mail/?view=cm&to=info@harittech.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-md ml-1 font-bold hover:text-blue-600 text-gray-800 drop-shadow-lg"
+        >
+          info@harittech.com
+        </a>
 
         <div className="flex justify-center gap-6 mb-4 ">
           <a
