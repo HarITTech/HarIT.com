@@ -108,14 +108,15 @@ const App = () => {
 
       {/* Footer Section */}
       <footer className="mt-16 text-center mb-7 text-gray-600 text-sm font-semibold">
-        <a
-          href="https://mail.google.com/mail/?view=cm&to=info@harittech.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-md ml-1 font-bold hover:text-blue-600 text-gray-800 drop-shadow-lg"
-        >
-          info@harittech.com
-        </a>
+        <p className="text-center mb-4 font-semibold text-gray-700">
+          Contact Us:{" "}
+          <a
+            href="mailto:info@harittech.com"
+            className="text-md ml-1 font-bold hover:text-blue-600 text-gray-800 drop-shadow-lg"
+          >
+            info@harittech.in
+          </a>
+        </p>
 
         <div className="flex justify-center gap-6 mb-4 ">
           <a
