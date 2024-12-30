@@ -14,14 +14,15 @@ import {
   FaLinkedinIn,
   FaInstagram,
 } from "react-icons/fa";
+import logo from './Harit.png';
 
 const App = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-100 to-orange-500 flex flex-col items-center justify-center px-4 overflow-y-visible">
       {/* Header Section */}
-      <header className="text-center mb-24 w-full flex flex-col items-center">
+      <header className="text-center mt-3 mb-16 w-full flex flex-col items-center">
         <img
-          src="/harit.png" // Replace with your logo URL
+          src={logo} // Replace with your logo URL
           alt="Company Logo"
           className="mb-1 drop-shadow-3xl shadow-white" // Applying drop shadow
         />
