@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Hindi Font Classes */
+.kalam-light {
+  font-family: "Kalam", serif;
+  font-weight: 300;
+}
+
+.kalam-regular {
+  font-family: "Kalam", serif;
+  font-weight: 400;
+}
+
+.kalam-bold {
+  font-family: "Kalam", serif;
+  font-weight: 700;
+}
+
+/* You can also add additional styles for the Hindi font if needed */
+.hindi-font {
+  font-family: "Kalam", serif;
+}
