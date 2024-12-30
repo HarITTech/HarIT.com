@@ -100,9 +100,10 @@ const App = () => {
       <footer className="mt-16 text-center mb-7 text-gray-600 text-sm font-semibold">
         <p className="text-center mb-4 font-semibold text-gray-700">
           Contact Us:{" "}
-          <span className="text-md ml-1 font-bold text-gray-800 drop-shadow-lg">
+          <a href="info@harittech.com"
+          className="text-md ml-1 font-bold hover:text-blue-600 text-gray-800 drop-shadow-lg">
             info@harittech.com
-          </span>
+          </a>
         </p>
 
         <div className="flex justify-center gap-6 mb-4 ">
