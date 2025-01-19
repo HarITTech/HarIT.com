@@ -29,9 +29,10 @@ const App = () => {
         <h1 className="text-5xl font-serif font-extrabold text-gray-800 mb-4">
           HarIT Tech Solution
         </h1>
-        <p className="text-3xl font-bold text-gray-800 hindi-font kalam-regular">
+        <p className="text-3xl font-extrabold text-gray-800 hindi-font kalam-regular animate-pulse">
           जल्द ही मुलाकात होगी....❤️
         </p>
+
       </header>
 
       <h1 className="text-center mb-2 font-serif font-semibold text-gray-600 text-2xl">
