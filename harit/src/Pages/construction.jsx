@@ -13,205 +13,147 @@ import {
   FaTwitter,
   FaLinkedinIn,
   FaInstagram,
+  FaRocket,
+  FaEnvelope,
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import logo from "../Harit.png";
 
 const Construction = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-100 to-orange-500 flex flex-col items-center justify-center px-4 overflow-y-visible">
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-orange-600 text-white flex flex-col items-center justify-start px-4 py-10 overflow-y-auto">
       {/* Header Section */}
-      <header className="text-center mt-3 mb-16 w-full flex flex-col items-center">
+      <header className="text-center mt-10 mb-12 w-full flex flex-col items-center">
         <img
-          src={logo} // Replace with your logo URL
-          alt="Company Logo"
-          className="mb-1 drop-shadow-3xl shadow-white" // Applying drop shadow
+          src={logo}
+          alt="HarIT Tech Solution Logo"
+          className="w-32 h-32 mb-4 drop-shadow-2xl shadow-orange-500 animate-fade-in"
         />
-        <h1 className="text-5xl font-serif font-extrabold text-gray-800 mb-4">
+        <h1 className="text-5xl md:text-6xl font-serif font-extrabold text-white mb-4 tracking-tight">
           HarIT Tech Solution
         </h1>
-        <p className="text-3xl font-extrabold text-gray-800 hindi-font kalam-regular animate-pulse">
+        <p className="text-2xl md:text-3xl font-bold text-orange-300 hindi-font kalam-regular animate-pulse">
           जल्द ही मुलाकात होगी....❤️
         </p>
-
-       
+        <p className="text-lg mt-4 max-w-2xl mx-auto text-gray-300">
+          We’re building something extraordinary. Stay tuned for cutting-edge tech solutions tailored to your needs!
+        </p>
       </header>
 
-      <h1 className="text-center mb-2 font-serif font-semibold text-gray-600 text-2xl">
-        Our Services
-      </h1>
-      <div className="w-48 h-1 mx-auto bg-orange-500 rounded mb-4"></div>
-
       {/* Services Section */}
-      <section className="grid max-w-5xl grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-        {/* Service 1 */}
-        <div className="inset-0 bg-white border-[1px] cursor-pointer text-gray-500 hover:border-blue-600 hover:text-blue-600 border-gray-300 bg-opacity-20 backdrop-blur-sm shadow-2xl rounded-lg p-8 flex flex-col items-center hover:scale-105 transition-transform">
-          <FaCode className="text-6xl mb-2" />
-          <h2 className="text-xl font-semibold text-center">Web Development</h2>
-        </div>
-
-        {/* Service 2 */}
-        <div className="inset-0 bg-white border-[1px] cursor-pointer text-gray-500 hover:border-green-500 hover:text-green-500 border-gray-300 bg-opacity-20 backdrop-blur-sm shadow-2xl rounded-lg p-8 flex flex-col items-center hover:scale-105 transition-transform">
-          <FaMobileAlt className="text-6xl mb-2" />
-          <h2 className="text-xl font-semibold text-center">
-            Mobile App Development
-          </h2>
-        </div>
-
-        {/* Service 3 */}
-        <div className="inset-0 bg-white border-[1px] cursor-pointer text-gray-500 hover:border-purple-500 hover:text-purple-500 border-gray-300 bg-opacity-20 backdrop-blur-sm shadow-2xl rounded-lg p-8 flex flex-col items-center hover:scale-105 transition-transform">
-          <FaCloud className="text-6xl mb-2" />
-          <h2 className="text-xl font-semibold text-center">Cloud Solutions</h2>
-        </div>
-
-        {/* Service 4 */}
-        <div className="inset-0 bg-white border-[1px] cursor-pointer text-gray-500 hover:border-red-500 hover:text-red-500 border-gray-300 bg-opacity-20 backdrop-blur-sm shadow-2xl rounded-lg p-8 flex flex-col items-center hover:scale-105 transition-transform">
-          <FaShieldAlt className="text-6xl mb-2" />
-          <h2 className="text-xl font-semibold text-center">Cybersecurity</h2>
-        </div>
-
-        {/* Service 5 */}
-        <div className="inset-0 bg-white border-[1px] cursor-pointer text-gray-500 hover:border-orange-500 hover:text-orange-500 border-gray-300 bg-opacity-20 backdrop-blur-sm shadow-2xl rounded-lg p-8 flex flex-col items-center hover:scale-105 transition-transform">
-          <FaChartLine className="text-6xl mb-2" />
-          <h2 className="text-xl font-semibold text-center">
-            Digital Marketing
-          </h2>
-        </div>
-
-        {/* Service 6 */}
-        <div className="inset-0 bg-white border-[1px] cursor-pointer text-gray-500 hover:border-pink-500 hover:text-pink-500 border-gray-300 bg-opacity-20 backdrop-blur-sm shadow-2xl rounded-lg p-8 flex flex-col items-center hover:scale-105 transition-transform">
-          <FaRobot className="text-6xl mb-2" />
-          <h2 className="text-xl font-semibold text-center">AI & Automation</h2>
-        </div>
-
-        {/* Service 7 */}
-        <div className="inset-0 bg-white border-[1px] cursor-pointer text-gray-500 hover:border-yellow-500 hover:text-yellow-500 border-gray-300 bg-opacity-20 backdrop-blur-sm shadow-2xl rounded-lg p-8 flex flex-col items-center hover:scale-105 transition-transform">
-          <FaDatabase className="text-6xl mb-2" />
-          <h2 className="text-xl font-semibold text-center">
-            Database Management
-          </h2>
-        </div>
-
-        {/* Service 8 */}
-        <div className="inset-0 bg-white border-[1px] cursor-pointer text-gray-500 hover:border-teal-500 hover:text-teal-500 border-gray-300 bg-opacity-20 backdrop-blur-sm shadow-2xl rounded-lg p-8 flex flex-col items-center hover:scale-105 transition-transform">
-          <FaServer className="text-6xl mb-2" />
-          <h2 className="text-xl font-semibold text-center">
-            Server Management
-          </h2>
-        </div>
-
-        {/* Service 9 */}
-        <div className="inset-0 bg-white border-[1px] cursor-pointer text-gray-500 hover:border-cyan-500 hover:text-cyan-500 border-gray-300 bg-opacity-20 backdrop-blur-sm shadow-2xl rounded-lg p-8 flex flex-col items-center hover:scale-105 transition-transform">
-          <FaSearchDollar className="text-6xl mb-2" />
-          <h2 className="text-xl font-semibold text-center">
-            SEO Optimization
-          </h2>
+      <section className="max-w-6xl mx-auto mb-16">
+        <h2 className="text-3xl font-semibold text-center text-white mb-6">Our Services</h2>
+        <div className="w-32 h-1 mx-auto bg-orange-500 rounded mb-10"></div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+          {[
+            { icon: <FaCode />, title: "Web Development", color: "blue-600" },
+            { icon: <FaMobileAlt />, title: "Mobile App Development", color: "green-500" },
+            { icon: <FaCloud />, title: "Cloud Solutions", color: "purple-500" },
+            { icon: <FaShieldAlt />, title: "Cybersecurity", color: "red-500" },
+            { icon: <FaChartLine />, title: "Digital Marketing", color: "orange-500" },
+            { icon: <FaRobot />, title: "AI & Automation", color: "pink-500" },
+            { icon: <FaDatabase />, title: "Database Management", color: "yellow-500" },
+            { icon: <FaServer />, title: "Server Management", color: "teal-500" },
+            { icon: <FaSearchDollar />, title: "SEO Optimization", color: "cyan-500" },
+          ].map((service, index) => (
+            <div
+              key={index}
+              className={`bg-gray-800 bg-opacity-80 border border-gray-700 rounded-lg p-6 flex flex-col items-center text-center hover:border-${service.color} hover:text-${service.color} hover:scale-105 transform transition-all duration-300 shadow-lg`}
+            >
+              <div className="text-5xl mb-4">{service.icon}</div>
+              <h3 className="text-xl font-semibold">{service.title}</h3>
+            </div>
+          ))}
         </div>
       </section>
 
-       {/* Navigation Button */}
-       <div className="mt-8">
-          <Link to="/connect">
-            <button className="bg-green-600 text-white px-6 py-3 rounded-md shadow-md hover:bg-green-700 transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 glow-button">
-              Get in Touch
-            </button>
-          </Link>
+      {/* What to Expect Section */}
+      <section className="max-w-4xl mx-auto mb-16">
+        <h2 className="text-3xl font-semibold text-center text-white mb-6">What to Expect</h2>
+        <div className="w-32 h-1 mx-auto bg-orange-500 rounded mb-10"></div>
+        <div className="space-y-8">
+          {[
+            { step: "Phase 1", title: "Design & Planning", desc: "Crafting a user-centric design and robust architecture.", date: "Q1 2025" },
+            { step: "Phase 2", title: "Development", desc: "Building innovative solutions with the latest tech.", date: "Q2 2025" },
+            { step: "Phase 3", title: "Launch", desc: "Unveiling HarIT Tech Solution to the world!", date: "Q3 2025" },
+          ].map((phase, index) => (
+            <div key={index} className="flex items-start space-x-4">
+              <div className="bg-orange-500 text-white rounded-full w-12 h-12 flex items-center justify-center font-bold">{index + 1}</div>
+              <div>
+                <h3 className="text-xl font-semibold text-orange-300">{phase.title}</h3>
+                <p className="text-gray-300">{phase.desc}</p>
+                <p className="text-sm text-gray-400">Expected: {phase.date}</p>
+              </div>
+            </div>
+          ))}
         </div>
+      </section>
 
-        <style jsx>{`
-          button {
-            --green: #1bfd9c;
-            font-size: 15px;
-            padding: 0.7em 2.7em;
-            letter-spacing: 0.06em;
-            position: relative;
-            font-family: inherit;
-            border-radius: 0.6em;
-            overflow: hidden;
-            transition: all 0.3s;
-            line-height: 1.4em;
-            border: 2px solid var(--green);
-            background: linear-gradient(
-              to right,
-              rgba(27, 253, 156, 0.1) 1%,
-              transparent 40%,
-              transparent 60%,
-              rgba(27, 253, 156, 0.1) 100%
-            );
-            color: var(--green);
-            box-shadow: inset 0 0 10px rgba(27, 253, 156, 0.4),
-              0 0 9px 3px rgba(27, 253, 156, 0.1);
-          }
+      {/* Subscription Section */}
+      <section className="max-w-2xl mx-auto mb-16 text-center">
+        <h2 className="text-3xl font-semibold text-white mb-6">Stay Updated</h2>
+        <p className="text-gray-300 mb-6">Subscribe to get the latest updates on our launch!</p>
+        <form className="flex flex-col sm:flex-row gap-4 justify-center">
+          <input
+            type="email"
+            placeholder="Enter your email"
+            className="p-3 rounded-lg bg-gray-700 border border-gray-600 text-white focus:outline-none focus:ring-2 focus:ring-orange-500"
+          />
+          <button
+            type="submit"
+            className="bg-orange-500 text-white px-6 py-3 rounded-lg hover:bg-orange-600 transition-all duration-300 flex items-center justify-center gap-2"
+          >
+            <FaEnvelope /> Subscribe
+          </button>
+        </form>
+      </section>
 
-          button:hover {
-            color: #82ffc9;
-            box-shadow: inset 0 0 10px rgba(27, 253, 156, 0.6),
-              0 0 9px 3px rgba(27, 253, 156, 0.2);
-          }
-
-          button:before {
-            content: "";
-            position: absolute;
-            left: -4em;
-            width: 4em;
-            height: 100%;
-            top: 0;
-            transition: transform 0.4s ease-in-out;
-            background: linear-gradient(
-              to right,
-              transparent 1%,
-              rgba(27, 253, 156, 0.1) 40%,
-              rgba(27, 253, 156, 0.1) 60%,
-              transparent 100%
-            );
-          }
-
-          button:hover:before {
-            transform: translateX(15em);
-          }
-        `}</style>
+      {/* Call to Action */}
+      <section className="mb-16">
+        <Link to="/connect">
+          <button className="bg-orange-500 text-white px-8 py-4 rounded-full shadow-lg hover:bg-orange-600 transition-all duration-300 transform hover:scale-105 flex items-center gap-2">
+            <FaRocket /> Get in Touch
+          </button>
+        </Link>
+      </section>
 
       {/* Footer Section */}
-      <footer className="mt-16 text-center mb-7 text-gray-600 text-sm font-semibold">
-        <p className="text-center mb-4 font-semibold text-gray-700">
+      <footer className="w-full bg-gray-900 py-8 text-center text-gray-400">
+        <p className="text-lg mb-4">
           Contact Us:{" "}
-          <a
-            href="mailto:info@harittech.com"
-            className="text-md ml-1 font-bold hover:text-blue-600 text-gray-800 drop-shadow-lg"
-          >
+          <a href="mailto:info@harittech.in" className="text-orange-400 hover:text-orange-500 font-semibold">
             info@harittech.in
           </a>
         </p>
-
-        <div className="flex justify-center gap-6 mb-4 ">
-          <a
-            href="https://facebook.com"
-            className="text-blue-600 hover:text-blue-800 text-3xl shadow-md p-2 rounded-full transition-all border-gray-300 hover:bg-opacity-20 hover:backdrop-blur-sm hover:bg-white"
-          >
-            <FaFacebookF />
-          </a>
-          <a
-            href="https://twitter.com"
-            className="text-blue-400 hover:text-blue-600 text-3xl shadow-md p-2 rounded-full transition-all border-gray-300 hover:bg-opacity-20 hover:backdrop-blur-sm hover:bg-white"
-          >
-            <FaTwitter />
-          </a>
-          <a
-            href="https://www.linkedin.com/company/harit-tech-solution/posts/?feedView=all"
-            className="text-blue-700 hover:text-blue-900 text-3xl shadow-md p-2 rounded-full transition-all border-gray-300 hover:bg-opacity-20 hover:backdrop-blur-sm hover:bg-white"
-          >
-            <FaLinkedinIn />
-          </a>
-          <a
-            href="https://instagram.com"
-            className="text-pink-600 hover:text-pink-800 text-3xl shadow-md p-2 rounded-full transition-all border-gray-300 hover:bg-opacity-20 hover:backdrop-blur-sm hover:bg-white"
-          >
-            <FaInstagram />
-          </a>
+        <div className="flex justify-center gap-6 mb-6">
+          {[
+            { icon: <FaFacebookF />, link: "https://facebook.com", color: "blue-600" },
+            { icon: <FaTwitter />, link: "https://twitter.com", color: "blue-400" },
+            { icon: <FaLinkedinIn />, link: "https://www.linkedin.com/company/harit-tech-solution", color: "blue-700" },
+            { icon: <FaInstagram />, link: "https://instagram.com", color: "pink-600" },
+          ].map((social, index) => (
+            <a
+              key={index}
+              href={social.link}
+              className={`text-2xl hover:text-${social.color} transition-all duration-300 p-2 rounded-full hover:bg-gray-800`}
+            >
+              {social.icon}
+            </a>
+          ))}
         </div>
-
-        <p>&copy; 2025 HarIT Tech Solution. All Rights Reserved.</p>
+        <p>© 2025 HarIT Tech Solution. All Rights Reserved.</p>
       </footer>
+
+      {/* Custom CSS */}
+      <style jsx>{`
+        @keyframes fadeIn {
+          from { opacity: 0; }
+          to { opacity: 1; }
+        }
+        .animate-fade-in {
+          animation: fadeIn 1.5s ease-in-out;
+        }
+      `}</style>
     </div>
   );
 };
