@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { Code, Cloud, Brain, GraduationCap, Layout as LayoutIcon, Settings, CheckCircle2, ArrowUpRight, ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import Button from '../components/Button';
+import homeImg from '../assets/home_img1.png';
+import tnpImg from '../assets/TNP1.png';
 import { ServiceItem, TestimonialItem } from '../types';
 
 const fadeInUp = {
@@ -99,7 +101,7 @@ const Home: React.FC = () => {
              {/* Abstract/Tech Background visual */}
             <div className="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white">
               <img 
-                src="https://thumbs.dreamstime.com/b/internet-information-technology-businessman-hand-showing-concept-75784736.jpg" 
+                src={homeImg} 
                 alt="HarIT Team Collaboration" 
                 className="w-full h-auto object-cover"
               />
@@ -203,7 +205,7 @@ const Home: React.FC = () => {
               </div>
               <div className="flex-1 bg-gray-800 relative min-h-[400px]">
                 <img 
-                  src="https://picsum.photos/seed/dashboard/800/800" 
+                  src={tnpImg} 
                   alt="TNP Dashboard Mockup" 
                   className="absolute inset-0 w-full h-full object-cover opacity-80"
                 />

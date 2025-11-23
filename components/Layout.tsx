@@ -49,7 +49,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
             </div> */}
             <img src={logo} alt="" className="w-10 h-10" />
             <span className="text-2xl font-bold tracking-tight text-brand-dark">
-              Har<span className="text-brand-orange">IT</span>
+              Har<span className="text-brand-orange">IT</span> Tech
             </span>
           </Link>
 

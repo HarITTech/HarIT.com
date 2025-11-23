@@ -2,30 +2,35 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Code, Cloud, Brain, Smartphone, Layout, PenTool, Database, Server } from 'lucide-react';
 import Button from '../components/Button';
+import web from '../assets/web2.png';
 
 const Services: React.FC = () => {
   const serviceCategories = [
     {
       title: "Custom Web & Mobile Development",
       icon: Smartphone,
+      img: web,
       description: "We build high-performance web and mobile applications that offer seamless user experiences.",
       features: ["React & Next.js Web Apps", "iOS & Android (Flutter/React Native)", "Progressive Web Apps (PWA)", "API Integration & Development"]
     },
     {
       title: "Cloud & DevOps Solutions",
       icon: Cloud,
+      img: web,
       description: "Scalable infrastructure management to ensure your applications are always up and running securely.",
       features: ["AWS / Azure / GCP Architecture", "CI/CD Pipeline Automation", "Docker & Kubernetes", "Serverless Computing"]
     },
     {
       title: "AI-ML & Data Engineering",
       icon: Brain,
+      img: web,
       description: "Leverage the power of Artificial Intelligence to automate processes and gain actionable insights.",
       features: ["Predictive Analytics", "Natural Language Processing (NLP)", "Computer Vision Models", "Data Visualization Dashboards"]
     },
     {
       title: "Product Design (UI/UX)",
       icon: PenTool,
+      img: web,
       description: "User-centric design that converts visitors into loyal customers through intuitive interfaces.",
       features: ["User Research & Personas", "Wireframing & Prototyping", "Design Systems", "Usability Testing"]
     }
@@ -67,7 +72,7 @@ const Services: React.FC = () => {
               </div>
               <div className="md:w-1/2 bg-gray-100 relative min-h-[300px]">
                  <img 
-                  src={`https://picsum.photos/seed/${index + 55}/800/600`} 
+                  src={service.img} 
                   alt={service.title} 
                   className="absolute inset-0 w-full h-full object-cover"
                 />

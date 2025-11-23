@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Check, Users, BarChart3, Lock, Calendar } from 'lucide-react';
 import Button from '../components/Button';
+import tnpImg from '../assets/TNP.png';
 
 const Solutions: React.FC = () => {
   return (
@@ -58,7 +59,7 @@ const Solutions: React.FC = () => {
               </Link>
             </div>
             <div className="lg:w-1/2 bg-gray-50 rounded-xl border border-gray-200 p-2 shadow-inner">
-               <img src="https://picsum.photos/seed/tnpportal/800/600" alt="TNP Portal UI" className="rounded-lg w-full h-auto" />
+               <img src={tnpImg} alt="TNP Portal UI" className="rounded-lg w-full h-auto" />
             </div>
           </div>
         </div>

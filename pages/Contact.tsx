@@ -1,7 +1,12 @@
+// import React, { useState } from "react";
+// import axios from "axios";
+// import { Mail, Phone, MapPin, Send } from "lucide-react";
+// import Button from "../components/Button";
+
 import React, { useState } from "react";
-import axios from "axios";
 import { Mail, Phone, MapPin, Send } from "lucide-react";
 import Button from "../components/Button";
+import emailjs from "@emailjs/browser";
 
 type FormData = {
   name: string;
@@ -24,74 +29,150 @@ const Contact: React.FC = () => {
   const [statusMsg, setStatusMsg] = useState<string | null>(null);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
-  // If you want to attach screenshots (optional)
-  const screenshotUrl1 = "/mnt/data/041fe0fa-3d12-4c87-9b6e-c68979028221.png";
-  const screenshotUrl2 = "/mnt/data/341f38ee-5121-421e-a4be-03e0a9bfa486.png";
-
-  const resetForm = () =>
-    setFormData({
-      name: "",
-      email: "",
-      phone: "",
-      service: "Custom Development",
-      message: ""
-    });
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
-    setStatusMsg(null);
     setErrorMsg(null);
+    setStatusMsg(null);
 
-    // Quick front-end validation
     if (!formData.name || !formData.email || !formData.message) {
-      setErrorMsg("Please fill all required fields (name, email, message).");
+      setErrorMsg("Please fill all required fields.");
       return;
     }
 
     setLoading(true);
 
+    const templateParams = {
+      user_name: formData.name,
+      user_email: formData.email,
+      user_phone: formData.phone,
+      service: formData.service,
+      message: formData.message
+    };
+
     try {
-      const payload = {
-        name: formData.name,
-        email: formData.email,
-        phone: formData.phone,
-        service: formData.service,
-        message: formData.message,
-        // Optional: include screenshots (your tooling will transform local path to usable URL)
-        screenshots: [screenshotUrl1, screenshotUrl2]
-      };
+      const result = await emailjs.send(
+        "service_dk2k4xn",
+        "template_zhpy45c",
+        templateParams,
+        "Lj7vKV7iFtvY20MOf"
+      );
 
-      // Adjust baseURL if your backend is hosted elsewhere
-      const response = await axios.post("http://localhost:3000/contact", payload, {
-        headers: { "Content-Type": "application/json" },
-        timeout: 15000
-      });
-
-      if (response.data?.success) {
-        setStatusMsg("Thanks for reaching out. We will get back to you shortly.");
-        resetForm();
+      if (result.status === 200) {
+        setStatusMsg("Thanks for reaching out! We will contact you shortly.");
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          service: "Custom Development",
+          message: ""
+        });
       } else {
-        // Backend responded but with a non-success result
-        setErrorMsg(response.data?.message || "Unexpected response from server.");
+        setErrorMsg("Failed to send message. Try again.");
       }
-    } catch (err: any) {
-      if (err.response) {
-        // Server returned a response (4xx or 5xx)
-        setErrorMsg(err.response.data?.message || `Server error: ${err.response.status}`);
-      } else if (err.code === "ECONNABORTED") {
-        setErrorMsg("Request timed out. Please try again.");
-      } else {
-        setErrorMsg("Unable to send message. Check your network or try later.");
-      }
+    } catch (error) {
+      console.error(error);
+      setErrorMsg("Something went wrong. Try again later.");
     } finally {
       setLoading(false);
     }
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+  ) => {
     setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
   };
+
+
+// type FormData = {
+//   name: string;
+//   email: string;
+//   phone: string;
+//   service: string;
+//   message: string;
+// };
+
+// const Contact: React.FC = () => {
+//   const [formData, setFormData] = useState<FormData>({
+//     name: "",
+//     email: "",
+//     phone: "",
+//     service: "Custom Development",
+//     message: ""
+//   });
+
+//   const [loading, setLoading] = useState(false);
+//   const [statusMsg, setStatusMsg] = useState<string | null>(null);
+//   const [errorMsg, setErrorMsg] = useState<string | null>(null);
+
+//   // If you want to attach screenshots (optional)
+//   const screenshotUrl1 = "/mnt/data/041fe0fa-3d12-4c87-9b6e-c68979028221.png";
+//   const screenshotUrl2 = "/mnt/data/341f38ee-5121-421e-a4be-03e0a9bfa486.png";
+
+//   const resetForm = () =>
+//     setFormData({
+//       name: "",
+//       email: "",
+//       phone: "",
+//       service: "Custom Development",
+//       message: ""
+//     });
+
+//   const handleSubmit = async (e: React.FormEvent) => {
+//     e.preventDefault();
+
+//     setStatusMsg(null);
+//     setErrorMsg(null);
+
+//     // Quick front-end validation
+//     if (!formData.name || !formData.email || !formData.message) {
+//       setErrorMsg("Please fill all required fields (name, email, message).");
+//       return;
+//     }
+
+//     setLoading(true);
+
+//     try {
+//       const payload = {
+//         name: formData.name,
+//         email: formData.email,
+//         phone: formData.phone,
+//         service: formData.service,
+//         message: formData.message,
+//         // Optional: include screenshots (your tooling will transform local path to usable URL)
+//         screenshots: [screenshotUrl1, screenshotUrl2]
+//       };
+
+//       // Adjust baseURL if your backend is hosted elsewhere
+//       const response = await axios.post("http://localhost:3000/contact", payload, {
+//         headers: { "Content-Type": "application/json" },
+//         timeout: 15000
+//       });
+
+//       if (response.data?.success) {
+//         setStatusMsg("Thanks for reaching out. We will get back to you shortly.");
+//         resetForm();
+//       } else {
+//         // Backend responded but with a non-success result
+//         setErrorMsg(response.data?.message || "Unexpected response from server.");
+//       }
+//     } catch (err: any) {
+//       if (err.response) {
+//         // Server returned a response (4xx or 5xx)
+//         setErrorMsg(err.response.data?.message || `Server error: ${err.response.status}`);
+//       } else if (err.code === "ECONNABORTED") {
+//         setErrorMsg("Request timed out. Please try again.");
+//       } else {
+//         setErrorMsg("Unable to send message. Check your network or try later.");
+//       }
+//     } finally {
+//       setLoading(false);
+//     }
+//   };
+
+//   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+//     setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
+//   };
 
   return (
     <div className="bg-brand-bg py-20">

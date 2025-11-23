@@ -10,6 +10,7 @@
     "start": "node server.js"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
     "axios": "^1.13.2",
     "cors": "^2.8.5",
     "express": "^5.1.0",
