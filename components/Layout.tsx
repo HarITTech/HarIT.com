@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Linkedin, Instagram, Mail, Phone, MapPin, ChevronRight } from 'lucide-react';
 import Button from './Button';
+import logo from '../assets/HarIT_Tech_Logo_Transperent.png';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -43,9 +44,10 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       >
         <div className="container mx-auto px-4 md:px-8 flex items-center justify-between">
           <Link to="/" className="flex items-center gap-2 group">
-            <div className="w-10 h-10 bg-brand-orange rounded-lg flex items-center justify-center text-white font-bold text-xl shadow-md group-hover:rotate-3 transition-transform">
-              H
-            </div>
+            {/* <div className="w-10 h-10 bg-brand-orange rounded-lg flex items-center justify-center text-white font-bold text-xl shadow-md group-hover:rotate-3 transition-transform">
+              {logo}
+            </div> */}
+            <img src={logo} alt="" className="w-10 h-10" />
             <span className="text-2xl font-bold tracking-tight text-brand-dark">
               Har<span className="text-brand-orange">IT</span>
             </span>
@@ -115,22 +117,23 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
             {/* Brand Info */}
             <div className="space-y-4">
               <div className="flex items-center gap-2 mb-4">
-                 <div className="w-8 h-8 bg-brand-orange rounded flex items-center justify-center text-white font-bold text-lg">
+                {/* <div className="w-8 h-8 bg-brand-orange rounded flex items-center justify-center text-white font-bold text-lg">
                   H
-                </div>
+                </div> */}
+                <img src={logo} alt="" className="w-10 h-10" />
                 <span className="text-xl font-bold">HarIT Tech</span>
               </div>
               <p className="text-gray-400 text-sm leading-relaxed">
                 Your trusted tech partner for building smart, scalable, future-ready solutions. From concept to code to impact.
               </p>
-              <div className="flex gap-4 pt-2">
+              {/* <div className="flex gap-4 pt-2">
                 <a href="#" className="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center hover:bg-brand-orange transition-colors">
                   <Linkedin size={16} />
                 </a>
                 <a href="#" className="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center hover:bg-brand-orange transition-colors">
                   <Instagram size={16} />
                 </a>
-              </div>
+              </div> */}
             </div>
 
             {/* Quick Links */}
@@ -149,9 +152,9 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
               <h3 className="text-lg font-semibold mb-6">Services</h3>
               <ul className="space-y-3">
                 <li><Link to="/services" className="text-gray-400 hover:text-brand-orange text-sm flex items-center gap-2"><ChevronRight size={14}/> Custom Development</Link></li>
-                <li><Link to="/services" className="text-gray-400 hover:text-brand-orange text-sm flex items-center gap-2"><ChevronRight size={14}/> Cloud & DevOps</Link></li>
-                <li><Link to="/solutions" className="text-gray-400 hover:text-brand-orange text-sm flex items-center gap-2"><ChevronRight size={14}/> TNP Portal</Link></li>
-                <li><Link to="/services" className="text-gray-400 hover:text-brand-orange text-sm flex items-center gap-2"><ChevronRight size={14}/> AI-ML Solutions</Link></li>
+                <li><Link to="/services" className="text-gray-400 hover:text-brand-orange text-sm flex items-center gap-2"><ChevronRight size={14}/> Website & App Development</Link></li>
+                <li><Link to="/solutions" className="text-gray-400 hover:text-brand-orange text-sm flex items-center gap-2"><ChevronRight size={14}/> AI Automation & Agentic Systems</Link></li>
+                <li><Link to="/services" className="text-gray-400 hover:text-brand-orange text-sm flex items-center gap-2"><ChevronRight size={14}/> Custom AI & ML Solutions</Link></li>
               </ul>
             </div>
 
@@ -165,11 +168,11 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                 </li>
                 <li className="flex items-center gap-3 text-sm text-gray-400">
                   <Mail className="text-brand-orange shrink-0" size={18} />
-                  <span>info@harittech.in</span>
+                  <span>harittechsolution@gmail.com</span>
                 </li>
                 <li className="flex items-center gap-3 text-sm text-gray-400">
                   <Phone className="text-brand-orange shrink-0" size={18} />
-                  <span>+91-9876543210</span>
+                  <span>7028654498 | 9561700261</span>
                 </li>
               </ul>
             </div>

@@ -26,7 +26,7 @@ const About: React.FC = () => {
             </p>
           </div>
           <div className="rounded-2xl overflow-hidden shadow-xl">
-             <img src="https://picsum.photos/seed/office/600/400" alt="Our Team" className="w-full h-full object-cover"/>
+             <img src="https://media.istockphoto.com/id/1489186115/photo/software-development-concept-coding-programmer-software-engineer-working-on-laptop-with.jpg?s=612x612&w=0&k=20&c=hBILeINToqY_zVGb1h1TGpsQhm0gxszcDEUSwuMply8=" alt="Our Team" className="w-full h-full object-cover"/>
           </div>
         </div>
 

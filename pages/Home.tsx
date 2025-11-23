@@ -99,7 +99,7 @@ const Home: React.FC = () => {
              {/* Abstract/Tech Background visual */}
             <div className="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white">
               <img 
-                src="https://picsum.photos/seed/techteam/800/600" 
+                src="https://thumbs.dreamstime.com/b/internet-information-technology-businessman-hand-showing-concept-75784736.jpg" 
                 alt="HarIT Team Collaboration" 
                 className="w-full h-auto object-cover"
               />
