@@ -4,7 +4,7 @@ import { Check, Users, BarChart3, Lock, Calendar } from 'lucide-react';
 import Button from '../components/Button';
 import tnpImg from '../assets/TNP.png';
 
-const Solutions: React.FC = () => {
+const Solutions = () => {
   return (
     <div className="bg-brand-bg pb-20">
       {/* Header */}

@@ -16,7 +16,7 @@ type FormData = {
   message: string;
 };
 
-const Contact: React.FC = () => {
+const Contact = () => {
   const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",

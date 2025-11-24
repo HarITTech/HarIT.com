@@ -2,9 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Code, Cloud, Brain, Smartphone, Layout, PenTool, Database, Server } from 'lucide-react';
 import Button from '../components/Button';
-import web from '../assets/web2.png';
+import web from '../assets/web2_bg.png';
 
-const Services: React.FC = () => {
+const Services = () => {
   const serviceCategories = [
     {
       title: "Custom Web & Mobile Development",

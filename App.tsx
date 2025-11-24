@@ -1,15 +1,15 @@
 import React from 'react';
 import { HashRouter as Router, Routes, Route } from 'react-router-dom';
-import Layout from './components/Layout';
-import Home from './pages/Home';
-import About from './pages/About';
-import Services from './pages/Services';
-import Solutions from './pages/Solutions';
-import Contact from './pages/Contact';
+import Layout from './src/components/Layout';
+import Home from './src/pages/Home';
+import About from './src/pages/About';
+import Services from './src/pages/Services';
+import Solutions from './src/pages/Solutions';
+import Contact from './src/pages/Contact';
 
 const App: React.FC = () => {
   return (
-    <Router>
+
       <Layout>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -22,7 +22,7 @@ const App: React.FC = () => {
           <Route path="/blog" element={<Home />} />
         </Routes>
       </Layout>
-    </Router>
+ 
   );
 };
 

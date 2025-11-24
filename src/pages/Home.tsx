@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import Button from '../components/Button';
 import homeImg from '../assets/home_img1.png';
 import tnpImg from '../assets/TNP1.png';
-import { ServiceItem, TestimonialItem } from '../types';
+import { ServiceItem, TestimonialItem } from '../../types';
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 30 },
@@ -22,7 +22,7 @@ const staggerContainer = {
   }
 };
 
-const Home: React.FC = () => {
+const Home = () => {
   const services: ServiceItem[] = [
     {
       title: 'Custom Web & Mobile',

@@ -2,7 +2,7 @@ import React from 'react';
 import { Target, Users, Lightbulb, ShieldCheck, Rocket } from 'lucide-react';
 import { motion } from 'framer-motion';
 
-const About: React.FC = () => {
+const About = () => {
   return (
     <div className="bg-brand-bg">
       <div className="bg-brand-dark text-white py-20">
