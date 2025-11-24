@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Linkedin, Instagram, Mail, Phone, MapPin, ChevronRight } from 'lucide-react';
 import Button from './Button';
-import logo from '../assets/HarIT_Tech_Logo_Transperent.png';
+import logo from '../assets/logo.png';
 
 interface LayoutProps {
   children: React.ReactNode;
