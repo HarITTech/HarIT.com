@@ -1,5 +1,5 @@
 🚀 HarIT Tech Solution – Official Repository
-<div align="center"> <img width="1200" height="450" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" alt="HarIT Tech Solution Banner" /> <h3>Smart • Scalable • Modern IT Solutions</h3> </div>
+<div align="center"> <img width="1200" height="450" src="./logo.png" alt="HarIT Tech Solution Banner" /> <h3>Smart • Scalable • Modern IT Solutions</h3> </div>
 📌 Overview
 
 This repository contains the complete source code for the HarIT Tech Solution website — a modern, responsive, production-ready web application built using:
