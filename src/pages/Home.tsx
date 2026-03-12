@@ -59,8 +59,17 @@ const Home = () => {
   return (
     <div className="overflow-hidden">
       {/* Hero Section */}
-      <section className="relative pt-12 pb-20 lg:pt-24 lg:pb-32 container mx-auto px-4 md:px-8">
-        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+      <section className="relative pt-12 pb-20 lg:pt-24 lg:pb-32 overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="hero-animated-bg" />
+          <div className="hero-orb hero-orb--one" />
+          <div className="hero-orb hero-orb--two" />
+          <div className="hero-orb hero-orb--three" />
+          <div className="hero-grid" />
+        </div>
+
+        <div className="container mx-auto px-4 md:px-8 relative z-10">
+          <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
           <motion.div 
             className="flex-1 text-center lg:text-left"
             initial="hidden"
@@ -119,6 +128,7 @@ const Home = () => {
               <p className="text-xs text-gray-500">Delivering production-ready code for startups and institutions.</p>
             </div>
           </motion.div>
+          </div>
         </div>
       </section>
 
