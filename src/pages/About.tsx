@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Target, Users, Lightbulb, ShieldCheck, Rocket } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -48,6 +49,26 @@ const About = () => {
             <p className="text-gray-600">
               To become a trusted global partner for smart, scalable digital solutions, known for our transparency, quality, and technical excellence.
             </p>
+          </div>
+        </div>
+
+        <div className="bg-white p-8 rounded-2xl shadow-sm border border-orange-100 mb-20">
+          <div className="flex flex-col md:flex-row md:items-start gap-4">
+            <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center text-brand-orange shrink-0">
+              <ShieldCheck size={24} />
+            </div>
+            <div>
+              <h3 className="text-2xl font-bold mb-2">MSME (Udyam) Registered</h3>
+              <p className="text-gray-600 mb-4 leading-relaxed">
+                HarIT Tech Solution is officially registered under the Ministry of MSME, Government of India. This reflects our commitment to compliant, transparent, and reliable business practices.
+              </p>
+              <Link
+                to="/msme-certificate"
+                className="inline-flex items-center gap-2 text-sm font-semibold text-brand-orange hover:text-brand-dark transition-colors"
+              >
+                View Udyam Registration Certificate
+              </Link>
+            </div>
           </div>
         </div>
 

@@ -193,7 +193,12 @@ const Contact = () => {
                 </div>
                 <div>
                   <h3 className="font-bold text-brand-dark text-lg">Email Us</h3>
-                  <p className="text-gray-600">harittechsolution@gmail.com</p>
+                  <a
+                    href="mailto:harittechsolution@gmail.com"
+                    className="text-gray-600 hover:text-brand-orange transition-colors"
+                  >
+                    harittechsolution@gmail.com
+                  </a>
                   {/* <p className="text-gray-600">careers@harittech.in</p> */}
                 </div>
               </div>
@@ -204,7 +209,21 @@ const Contact = () => {
                 </div>
                 <div>
                   <h3 className="font-bold text-brand-dark text-lg">Call Us</h3>
-                  <p className="text-gray-600">+91-7028654498 | +91-9561700261</p>
+                  <div className="text-gray-600 flex flex-wrap items-center gap-2">
+                    <a
+                      href="tel:+917028654498"
+                      className="hover:text-brand-orange transition-colors"
+                    >
+                      +91-7028654498
+                    </a>
+                    <span className="text-gray-400">|</span>
+                    <a
+                      href="tel:+919561700261"
+                      className="hover:text-brand-orange transition-colors"
+                    >
+                      +91-9561700261
+                    </a>
+                  </div>
                   <p className="text-xs text-gray-500 mt-1">Mon-sat, 9am - 7pm IST</p>
                 </div>
               </div>
@@ -215,7 +234,14 @@ const Contact = () => {
                 </div>
                 <div>
                   <h3 className="font-bold text-brand-dark text-lg">Visit Us</h3>
-                  <p className="text-gray-600 max-w-xs">Nagpur, Maharashtra, India - 440017</p>
+                  <a
+                    href="https://maps.google.com/?q=Nagpur, Maharashtra, India 440017"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-600 hover:text-brand-orange transition-colors max-w-xs inline-block"
+                  >
+                    Nagpur, Maharashtra, India - 440017
+                  </a>
                 </div>
               </div>
             </div>

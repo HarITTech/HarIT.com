@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Linkedin, Instagram, Mail, Phone, MapPin, ChevronRight } from 'lucide-react';
+import { Menu, X, Linkedin, Youtube, Mail, Phone, MapPin, ChevronRight } from 'lucide-react';
 import Button from './Button';
 import logo from '../assets/logo.png';
 
@@ -126,14 +126,33 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
               <p className="text-gray-400 text-sm leading-relaxed">
                 Your trusted tech partner for building smart, scalable, future-ready solutions. From concept to code to impact.
               </p>
-              {/* <div className="flex gap-4 pt-2">
-                <a href="#" className="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center hover:bg-brand-orange transition-colors">
+              <p className="text-gray-400 text-sm">MSME (Udyam) Registered</p>
+              <Link
+                to="/msme-certificate"
+                className="text-xs text-brand-orange hover:text-white transition-colors"
+              >
+                View Registration Certificate
+              </Link>
+              <div className="flex gap-4 pt-2">
+                <a
+                  href="https://www.linkedin.com/company/harit-tech-solution/posts/?feedView=all"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="HarIT Tech Solution on LinkedIn"
+                  className="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center hover:bg-brand-orange transition-colors"
+                >
                   <Linkedin size={16} />
                 </a>
-                <a href="#" className="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center hover:bg-brand-orange transition-colors">
-                  <Instagram size={16} />
+                <a
+                  href="https://www.youtube.com/@HarITTechSolution"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="HarIT Tech Solution on YouTube"
+                  className="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center hover:bg-brand-orange transition-colors"
+                >
+                  <Youtube size={16} />
                 </a>
-              </div> */}
+              </div>
             </div>
 
             {/* Quick Links */}
@@ -164,15 +183,39 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
               <ul className="space-y-4">
                 <li className="flex items-start gap-3 text-sm text-gray-400">
                   <MapPin className="text-brand-orange shrink-0" size={18} />
-                  <span>Nagpur, Maharashtra, India</span>
+                  <a
+                    href="https://maps.google.com/?q=Nagpur, Maharashtra, India 440017"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-white transition-colors"
+                  >
+                    Nagpur, Maharashtra, India
+                  </a>
                 </li>
                 <li className="flex items-center gap-3 text-sm text-gray-400">
                   <Mail className="text-brand-orange shrink-0" size={18} />
-                  <span>harittechsolution@gmail.com</span>
+                  <a
+                    href="mailto:harittechsolution@gmail.com"
+                    className="hover:text-white transition-colors"
+                  >
+                    harittechsolution@gmail.com
+                  </a>
                 </li>
                 <li className="flex items-center gap-3 text-sm text-gray-400">
                   <Phone className="text-brand-orange shrink-0" size={18} />
-                  <span>7028654498 | 9561700261</span>
+                  <a
+                    href="tel:+917028654498"
+                    className="hover:text-white transition-colors"
+                  >
+                    7028654498
+                  </a>
+                  <span className="text-gray-500">|</span>
+                  <a
+                    href="tel:+919561700261"
+                    className="hover:text-white transition-colors"
+                  >
+                    9561700261
+                  </a>
                 </li>
               </ul>
             </div>
@@ -181,8 +224,8 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500">
             <p>&copy; {new Date().getFullYear()} HarIT Tech Solution. All rights reserved.</p>
             <div className="flex gap-6 mt-4 md:mt-0">
-              <a href="#" className="hover:text-white">Privacy Policy</a>
-              <a href="#" className="hover:text-white">Terms of Service</a>
+              <Link to="/privacy" className="hover:text-white">Privacy Policy</Link>
+              <Link to="/terms" className="hover:text-white">Terms of Service</Link>
             </div>
           </div>
         </div>
