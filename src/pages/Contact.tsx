@@ -1,12 +1,8 @@
-// import React, { useState } from "react";
-// import axios from "axios";
-// import { Mail, Phone, MapPin, Send } from "lucide-react";
-// import Button from "../components/Button";
-
 import React, { useState } from "react";
-import { Mail, Phone, MapPin, Send } from "lucide-react";
+import { Mail, Phone, MapPin, Send, Zap, Check } from "lucide-react";
 import Button from "../components/Button";
 import emailjs from "@emailjs/browser";
+import { motion } from "framer-motion";
 
 type FormData = {
   name: string;
@@ -14,6 +10,16 @@ type FormData = {
   phone: string;
   service: string;
   message: string;
+};
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 30 },
+  visible: (d = 0) => ({ opacity: 1, y: 0, transition: { duration: 0.6, delay: d, ease: "easeOut" } })
+};
+
+const stagger = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1, transition: { staggerChildren: 0.1 } }
 };
 
 const Contact = () => {
@@ -83,260 +89,220 @@ const Contact = () => {
     setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-
-// type FormData = {
-//   name: string;
-//   email: string;
-//   phone: string;
-//   service: string;
-//   message: string;
-// };
-
-// const Contact: React.FC = () => {
-//   const [formData, setFormData] = useState<FormData>({
-//     name: "",
-//     email: "",
-//     phone: "",
-//     service: "Custom Development",
-//     message: ""
-//   });
-
-//   const [loading, setLoading] = useState(false);
-//   const [statusMsg, setStatusMsg] = useState<string | null>(null);
-//   const [errorMsg, setErrorMsg] = useState<string | null>(null);
-
-//   // If you want to attach screenshots (optional)
-//   const screenshotUrl1 = "/mnt/data/041fe0fa-3d12-4c87-9b6e-c68979028221.png";
-//   const screenshotUrl2 = "/mnt/data/341f38ee-5121-421e-a4be-03e0a9bfa486.png";
-
-//   const resetForm = () =>
-//     setFormData({
-//       name: "",
-//       email: "",
-//       phone: "",
-//       service: "Custom Development",
-//       message: ""
-//     });
-
-//   const handleSubmit = async (e: React.FormEvent) => {
-//     e.preventDefault();
-
-//     setStatusMsg(null);
-//     setErrorMsg(null);
-
-//     // Quick front-end validation
-//     if (!formData.name || !formData.email || !formData.message) {
-//       setErrorMsg("Please fill all required fields (name, email, message).");
-//       return;
-//     }
-
-//     setLoading(true);
-
-//     try {
-//       const payload = {
-//         name: formData.name,
-//         email: formData.email,
-//         phone: formData.phone,
-//         service: formData.service,
-//         message: formData.message,
-//         // Optional: include screenshots (your tooling will transform local path to usable URL)
-//         screenshots: [screenshotUrl1, screenshotUrl2]
-//       };
-
-//       // Adjust baseURL if your backend is hosted elsewhere
-//       const response = await axios.post("http://localhost:3000/contact", payload, {
-//         headers: { "Content-Type": "application/json" },
-//         timeout: 15000
-//       });
-
-//       if (response.data?.success) {
-//         setStatusMsg("Thanks for reaching out. We will get back to you shortly.");
-//         resetForm();
-//       } else {
-//         // Backend responded but with a non-success result
-//         setErrorMsg(response.data?.message || "Unexpected response from server.");
-//       }
-//     } catch (err: any) {
-//       if (err.response) {
-//         // Server returned a response (4xx or 5xx)
-//         setErrorMsg(err.response.data?.message || `Server error: ${err.response.status}`);
-//       } else if (err.code === "ECONNABORTED") {
-//         setErrorMsg("Request timed out. Please try again.");
-//       } else {
-//         setErrorMsg("Unable to send message. Check your network or try later.");
-//       }
-//     } finally {
-//       setLoading(false);
-//     }
-//   };
-
-//   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-//     setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
-//   };
-
   return (
-    <div className="bg-brand-bg py-20">
-      <div className="container mx-auto px-4 md:px-8">
-        <div className="grid lg:grid-cols-2 gap-16">
-          {/* Contact Info */}
-          <div>
-            <h1 className="text-4xl md:text-5xl font-bold text-brand-dark mb-6">Let's Build Something Remarkable</h1>
-            <p className="text-lg text-gray-600 mb-10 leading-relaxed">
-              Have an idea? Need to modernize your existing stack?
-              Fill out the form, and our team will get back to you within 24 hours.
-            </p>
+    <div className="bg-brand-bg overflow-hidden">
+      {/* ─── Premium Dark Hero ─── */}
+      <section className="relative pt-32 pb-32 bg-brand-dark overflow-hidden">
+        {/* Background Gradients & Glows */}
+        <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-brand-orange/10 rounded-full blur-[100px] -translate-y-1/2 pointer-events-none" />
+        <div className="absolute bottom-0 left-1/4 w-[400px] h-[400px] bg-orange-400/5 rounded-full blur-[80px] translate-y-1/2 pointer-events-none" />
+        <div
+          className="absolute inset-0 opacity-[0.03] pointer-events-none"
+          style={{
+            backgroundImage: 'linear-gradient(rgba(255,122,26,0.8) 1px, transparent 1px), linear-gradient(to right, rgba(255,122,26,0.8) 1px, transparent 1px)',
+            backgroundSize: '40px 40px',
+          }}
+        />
 
-            <div className="space-y-8 mb-12">
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center text-brand-orange shadow-sm shrink-0">
-                  <Mail size={24} />
-                </div>
-                <div>
-                  <h3 className="font-bold text-brand-dark text-lg">Email Us</h3>
-                  <a
-                    href="mailto:harittechsolution@gmail.com"
-                    className="text-gray-600 hover:text-brand-orange transition-colors"
-                  >
-                    harittechsolution@gmail.com
-                  </a>
-                  {/* <p className="text-gray-600">careers@harittech.in</p> */}
-                </div>
+        <div className="container mx-auto px-4 md:px-8 relative z-10 text-center">
+          <motion.div initial="hidden" animate="visible" variants={stagger} className="max-w-4xl mx-auto">
+            <motion.div variants={fadeUp} custom={0}>
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 mb-6 bg-brand-orange/10 border border-brand-orange/20 text-brand-orange rounded-full text-xs font-bold tracking-widest uppercase">
+                <Zap size={14} className="fill-current" /> Let's Connect
+              </div>
+            </motion.div>
+            <motion.h1 variants={fadeUp} custom={0.1} className="text-4xl md:text-5xl lg:text-7xl font-extrabold text-white mb-6 leading-tight">
+              Build Something <span className="text-brand-orange text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-amber-300">Remarkable</span>
+            </motion.h1>
+            <motion.p variants={fadeUp} custom={0.2} className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto leading-relaxed">
+              Have an idea? Need to modernize your existing stack? Our team of experts is ready to help you ship faster and scale better.
+            </motion.p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ─── Contact Section ─── */}
+      <section className="container mx-auto px-4 md:px-8 -mt-20 relative z-20 pb-24">
+        <div className="grid lg:grid-cols-5 gap-8 lg:gap-12">
+          {/* Contact Info (Left) */}
+          <motion.div 
+            initial="hidden" animate="visible" variants={fadeUp} custom={0.3}
+            className="lg:col-span-2 space-y-6"
+          >
+            <div className="bg-white p-8 md:p-10 rounded-[2rem] shadow-xl border border-gray-100 flex flex-col gap-10 h-full">
+              <div>
+                <h3 className="text-3xl font-bold text-brand-dark mb-3">Get in Touch</h3>
+                <p className="text-gray-500 text-lg leading-relaxed">
+                  Fill out the form, and our engineering team will get back to you within 24 hours. No strings attached.
+                </p>
               </div>
 
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center text-brand-orange shadow-sm shrink-0">
-                  <Phone size={24} />
-                </div>
-                <div>
-                  <h3 className="font-bold text-brand-dark text-lg">Call Us</h3>
-                  <div className="text-gray-600 flex flex-wrap items-center gap-2">
-                    <a
-                      href="tel:+917028654498"
-                      className="hover:text-brand-orange transition-colors"
-                    >
-                      +91-7028654498
-                    </a>
-                    <span className="text-gray-400">|</span>
-                    <a
-                      href="tel:+919561700261"
-                      className="hover:text-brand-orange transition-colors"
-                    >
-                      +91-9561700261
+              <div className="space-y-8 flex-grow">
+                {/* Email */}
+                <div className="flex flex-col sm:flex-row gap-5 items-start sm:items-center group">
+                  <div className="w-14 h-14 bg-orange-50 rounded-2xl flex items-center justify-center text-brand-orange group-hover:bg-brand-orange group-hover:text-white transition-colors duration-300 shrink-0">
+                    <Mail size={24} />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-gray-500 text-sm uppercase tracking-wider mb-1">Email Us</h4>
+                    <a href="mailto:harittechsolution@gmail.com" className="text-xl font-bold text-brand-dark hover:text-brand-orange transition-colors">
+                      harittechsolution@gmail.com
                     </a>
                   </div>
-                  <p className="text-xs text-gray-500 mt-1">Mon-sat, 9am - 7pm IST</p>
+                </div>
+
+                {/* Phone */}
+                <div className="flex flex-col sm:flex-row gap-5 items-start sm:items-center group">
+                  <div className="w-14 h-14 bg-orange-50 rounded-2xl flex items-center justify-center text-brand-orange group-hover:bg-brand-orange group-hover:text-white transition-colors duration-300 shrink-0">
+                    <Phone size={24} />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-gray-500 text-sm uppercase tracking-wider mb-1">Call Us</h4>
+                    <div className="flex flex-col gap-1">
+                      <a href="tel:+917028654498" className="text-xl font-bold text-brand-dark hover:text-brand-orange transition-colors">
+                        +91-7028654498
+                      </a>
+                      <a href="tel:+919561700261" className="text-lg font-bold text-gray-700 hover:text-brand-orange transition-colors">
+                        +91-9561700261
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Location */}
+                <div className="flex flex-col sm:flex-row gap-5 items-start sm:items-center group">
+                  <div className="w-14 h-14 bg-orange-50 rounded-2xl flex items-center justify-center text-brand-orange group-hover:bg-brand-orange group-hover:text-white transition-colors duration-300 shrink-0">
+                    <MapPin size={24} />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-gray-500 text-sm uppercase tracking-wider mb-1">Visit Us</h4>
+                    <a 
+                      href="https://maps.google.com/?q=Nagpur, Maharashtra, India 440017" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="text-lg font-bold text-brand-dark hover:text-brand-orange transition-colors block leading-snug"
+                    >
+                      Nagpur, Maharashtra<br/>India - 440017
+                    </a>
+                  </div>
                 </div>
               </div>
 
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center text-brand-orange shadow-sm shrink-0">
-                  <MapPin size={24} />
-                </div>
-                <div>
-                  <h3 className="font-bold text-brand-dark text-lg">Visit Us</h3>
-                  <a
-                    href="https://maps.google.com/?q=Nagpur, Maharashtra, India 440017"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-gray-600 hover:text-brand-orange transition-colors max-w-xs inline-block"
-                  >
-                    Nagpur, Maharashtra, India - 440017
-                  </a>
-                </div>
+              <div className="bg-orange-50 p-6 rounded-2xl border border-orange-100">
+                <h4 className="font-bold text-brand-dark mb-2">FAQ: Next Steps?</h4>
+                <p className="text-sm text-gray-600">
+                  Usually a 30-minute discovery call to discuss technical feasibility, roadmap, and pricing.
+                </p>
               </div>
             </div>
+          </motion.div>
 
-            <div className="bg-white p-6 rounded-2xl shadow-sm border border-orange-100">
-              <h3 className="font-bold text-brand-dark mb-3">FAQ: How long does a consultation take?</h3>
-              <p className="text-sm text-gray-600">Usually 30 minutes. We'll discuss your requirements, tech feasibility, and give you a rough roadmap—no strings attached.</p>
+          {/* Form (Right) */}
+          <motion.div 
+             initial="hidden" animate="visible" variants={fadeUp} custom={0.4}
+             className="lg:col-span-3"
+          >
+            <div className="bg-white rounded-[2rem] shadow-2xl p-8 md:p-12 border-t-8 border-brand-orange h-full">
+              <h2 className="text-3xl font-bold mb-8 text-brand-dark">Send us a message</h2>
+
+              {statusMsg && (
+                <div className="mb-8 p-4 bg-green-50/80 border border-green-200 text-green-700 rounded-2xl font-medium flex items-center gap-3">
+                  <span className="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center text-green-600 shrink-0"><Check size={18} /></span>
+                  {statusMsg}
+                </div>
+              )}
+              {errorMsg && (
+                <div className="mb-8 p-4 bg-red-50/80 border border-red-200 text-red-700 rounded-2xl font-medium">{errorMsg}</div>
+              )}
+
+              <form onSubmit={handleSubmit} className="space-y-6 flex flex-col justify-between h-[calc(100%-80px)]">
+                <div className="space-y-6">
+                  <div>
+                    <label className="block text-sm font-bold text-gray-700 mb-2">Full Name <span className="text-brand-orange">*</span></label>
+                    <input
+                      type="text"
+                      name="name"
+                      required
+                      value={formData.name}
+                      onChange={handleChange}
+                      className="w-full px-5 py-4 bg-gray-50 rounded-xl border border-gray-200 focus:border-brand-orange focus:ring-4 focus:ring-orange-100 focus:bg-white outline-none transition-all font-medium"
+                      placeholder="John Doe"
+                    />
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                      <label className="block text-sm font-bold text-gray-700 mb-2">Email Address <span className="text-brand-orange">*</span></label>
+                      <input
+                        type="email"
+                        name="email"
+                        required
+                        value={formData.email}
+                        onChange={handleChange}
+                        className="w-full px-5 py-4 bg-gray-50 rounded-xl border border-gray-200 focus:border-brand-orange focus:ring-4 focus:ring-orange-100 focus:bg-white outline-none transition-all font-medium"
+                        placeholder="john@company.com"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-bold text-gray-700 mb-2">Phone Number</label>
+                      <input
+                        type="tel"
+                        name="phone"
+                        value={formData.phone}
+                        onChange={handleChange}
+                        className="w-full px-5 py-4 bg-gray-50 rounded-xl border border-gray-200 focus:border-brand-orange focus:ring-4 focus:ring-orange-100 focus:bg-white outline-none transition-all font-medium"
+                        placeholder="+91 98765 43210"
+                      />
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-bold text-gray-700 mb-2">Project Type</label>
+                    <div className="relative">
+                      <select
+                        name="service"
+                        value={formData.service}
+                        onChange={handleChange}
+                        className="w-full px-5 py-4 bg-gray-50 rounded-xl border border-gray-200 focus:border-brand-orange focus:ring-4 focus:ring-orange-100 focus:bg-white outline-none transition-all font-medium appearance-none cursor-pointer"
+                      >
+                        <option>Custom Development</option>
+                        <option>Website & App Development</option>
+                        <option>AI Automation & Agentic Systems</option>
+                        <option>Custom AI & ML Solutions</option>
+                        <option>Database Management & Optimization</option>
+                        <option>ERP System Development</option>
+                        <option>Other</option>
+                      </select>
+                      <div className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none text-gray-500">
+                        <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M19 9l-7 7-7-7"></path></svg>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-bold text-gray-700 mb-2">How can we help? <span className="text-brand-orange">*</span></label>
+                    <textarea
+                      rows={5}
+                      name="message"
+                      required
+                      value={formData.message}
+                      onChange={handleChange}
+                      className="w-full px-5 py-4 bg-gray-50 rounded-xl border border-gray-200 focus:border-brand-orange focus:ring-4 focus:ring-orange-100 focus:bg-white outline-none transition-all font-medium resize-none"
+                      placeholder="Tell us about your project goals, timelines, or any specific requirements..."
+                    />
+                  </div>
+                </div>
+
+                <div className="pt-4">
+                  <Button type="submit" variant="primary" className="w-full text-lg py-5 shadow-lg shadow-orange-500/30 hover:shadow-orange-500/50" disabled={loading}>
+                    {loading ? "Sending..." : "Send Message"} <Send size={20} className="ml-2 inline" />
+                  </Button>
+                </div>
+              </form>
             </div>
-          </div>
-
-          {/* Form */}
-          <div className="bg-white rounded-3xl shadow-xl p-8 md:p-12">
-            <h2 className="text-2xl font-bold mb-6 text-brand-dark">Send us a message</h2>
-
-            {statusMsg && <div className="mb-4 p-3 bg-green-50 text-green-700 rounded">{statusMsg}</div>}
-            {errorMsg && <div className="mb-4 p-3 bg-red-50 text-red-700 rounded">{errorMsg}</div>}
-
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
-                <input
-                  type="text"
-                  name="name"
-                  required
-                  value={formData.name}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-brand-orange focus:ring-2 focus:ring-orange-100 outline-none transition-all"
-                  placeholder="John Doe"
-                />
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
-                  <input
-                    type="email"
-                    name="email"
-                    required
-                    value={formData.email}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-brand-orange focus:ring-2 focus:ring-orange-100 outline-none transition-all"
-                    placeholder="john@company.com"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
-                  <input
-                    type="tel"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-brand-orange focus:ring-2 focus:ring-orange-100 outline-none transition-all"
-                    placeholder="+91..."
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Project Type</label>
-                <select
-                  name="service"
-                  value={formData.service}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-brand-orange focus:ring-2 focus:ring-orange-100 outline-none transition-all bg-white"
-                >
-                  <option>Custom Development</option>
-                  <option>Website & App Development</option>
-                  <option>AI Automation & Agentic Systems</option>
-                  <option>Custom AI & ML Solutions</option>
-                  <option>Database Management & Optimization</option>
-                  <option>ERP System Development</option>
-                  <option>Other</option>
-                </select>
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">How can we help?</label>
-                <textarea
-                  rows={4}
-                  name="message"
-                  required
-                  value={formData.message}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-brand-orange focus:ring-2 focus:ring-orange-100 outline-none transition-all"
-                  placeholder="Tell us about your project goals..."
-                />
-              </div>
-
-              <Button type="submit" variant="primary" fullWidth className="text-base py-4" disabled={loading}>
-                {loading ? "Sending..." : "Send Message"} <Send size={18} className="ml-2" />
-              </Button>
-            </form>
-          </div>
+          </motion.div>
         </div>
-      </div>
+      </section>
     </div>
   );
 };
