@@ -9,6 +9,10 @@ import Contact from './src/pages/Contact';
 import Privacy from './src/pages/Privacy';
 import Terms from './src/pages/Terms';
 import Certificate from './src/pages/Certificate';
+import Aaramse from './src/pages/Aaramse';
+import AaramsePrivacy from './src/pages/AaramsePrivacy';
+import AaramseTerms from './src/pages/AaramseTerms';
+import AaramseRefund from './src/pages/AaramseRefund';
 
 const App: React.FC = () => {
   return (
@@ -22,6 +26,10 @@ const App: React.FC = () => {
           <Route path="/contact" element={<Contact />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/terms" element={<Terms />} />
+          <Route path="/aaramse" element={<Aaramse />} />
+          <Route path="/aaramse/privacy-policy" element={<AaramsePrivacy />} />
+          <Route path="/aaramse/terms" element={<AaramseTerms />} />
+          <Route path="/aaramse/refund-policy" element={<AaramseRefund />} />
           <Route path="/msme-certificate" element={<Certificate />} />
           {/* Fallback route for demo purposes */}
           <Route path="/careers" element={<Contact />} />

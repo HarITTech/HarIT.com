@@ -9,6 +9,7 @@ import { motion, useInView } from 'framer-motion';
 import Button from '../components/Button';
 import heroImg from '../assets/home_hero_visual.png';
 import tnpImg from '../assets/TNP1.png';
+import aaramseDashboardImg from '../assets/aaramse/dashboard.jpg';
 
 /* ─── Animation Variants ─── */
 const fadeUp = {
@@ -85,6 +86,13 @@ const whyUs = [
 ];
 
 const projects = [
+  {
+    name: 'AaramSe',
+    tag: 'New Flagship',
+    desc: 'Premium digital queue & smart appointment solution with live queue tracking, slot booking, and partner dashboards — now live in Nanded.',
+    tech: ['React Native', 'Node.js', 'MongoDB', 'Expo'],
+    link: '/aaramse',
+  },
   {
     name: 'TNP Portal',
     tag: 'Flagship Product',
@@ -429,6 +437,111 @@ const Home: React.FC = () => {
       {/* ════════════════════════════════════════
           FLAGSHIP — TNP PORTAL
       ════════════════════════════════════════ */}
+      {/* NEW FLAGSHIP: AaramSe */}
+      <section className="py-24 bg-brand-dark relative overflow-hidden">
+        <div className="container mx-auto px-4 md:px-8">
+          <div className="bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 rounded-3xl overflow-hidden shadow-2xl relative">
+            {/* Decorative glows */}
+            <div className="absolute top-0 left-0 w-80 h-80 bg-brand-orange/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 pointer-events-none" />
+            <div className="absolute bottom-0 right-0 w-96 h-96 bg-indigo-400/10 rounded-full blur-3xl translate-x-1/3 translate-y-1/3 pointer-events-none" />
+
+            <div className="flex flex-col lg:flex-row relative z-10">
+              <motion.div
+                className="flex-1 p-8 md:p-12 lg:p-16 flex flex-col justify-center"
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={fadeLeft}
+              >
+                <div className="inline-flex items-center gap-2 px-3 py-1 mb-6 bg-white/5 border border-white/10 text-white rounded-full text-xs font-bold tracking-wider w-fit">
+                  <Star size={10} className="text-brand-orange fill-current" /> NEW FLAGSHIP PRODUCT
+                </div>
+                <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold text-white mb-5 leading-tight">
+                  AaramSe<br />
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-amber-300">
+                    Digital Queue & Smart Appointments
+                  </span>
+                </h2>
+                <p className="text-gray-300 text-lg mb-8 leading-relaxed">
+                  A premium digital solution to eliminate physical waiting lines with live queue tracking, slot booking, and smart scheduling — now live in <span className="text-white font-semibold">Nanded</span>.
+                </p>
+
+                <div className="flex flex-wrap gap-2 mb-8">
+                  {[
+                    { icon: Smartphone, label: 'Mobile-first' },
+                    { icon: Users, label: 'Users + Partners' },
+                    { icon: Zap, label: 'Real-time updates' },
+                  ].map(({ icon: Icon, label }) => (
+                    <div
+                      key={label}
+                      className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-gray-200 text-xs"
+                    >
+                      <Icon size={14} className="text-brand-orange" />
+                      <span className="font-semibold">{label}</span>
+                    </div>
+                  ))}
+                </div>
+
+                <ul className="space-y-3 mb-10 text-gray-200/90">
+                  {[
+                    'Live queue tracking on your phone',
+                    'Smart slot booking to avoid peak hours',
+                    'Proactive sound alerts & turn notifications',
+                    'Partner dashboard to manage daily flow',
+                    'QR integration for quick onboarding',
+                  ].map((item) => (
+                    <li key={item} className="flex items-center gap-3 text-sm">
+                      <CheckCircle2 className="text-brand-orange flex-shrink-0" size={17} />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+
+                <div className="flex flex-wrap gap-4">
+                  <Link to="/aaramse">
+                    <Button variant="primary">Explore AaramSe</Button>
+                  </Link>
+                  <Link to="/contact">
+                    <button className="px-6 py-3 border border-white/25 text-white text-sm font-semibold rounded-full hover:bg-white/10 transition-colors">
+                      Partner with Us →
+                    </button>
+                  </Link>
+                </div>
+              </motion.div>
+
+              <motion.div
+                className="flex-1 relative min-h-[440px]"
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={fadeRight}
+              >
+                <div className="absolute inset-0 flex items-center justify-center p-8">
+                  <div className="relative w-[260px] sm:w-[300px] lg:w-[330px] aspect-[9/19] rounded-[2.6rem] overflow-hidden border border-white/15 shadow-[0_30px_80px_-40px_rgba(0,0,0,0.8)]">
+                    <img
+                      src={aaramseDashboardImg}
+                      alt="AaramSe App Dashboard"
+                      className="w-full h-full object-cover"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 ring-1 ring-white/10 rounded-[2.6rem] pointer-events-none" />
+                  </div>
+                </div>
+
+                {/* Corner badge */}
+                <div className="absolute top-6 right-6 bg-white/10 backdrop-blur-md border border-white/15 rounded-2xl px-4 py-2">
+                  <div className="text-white text-xs font-bold">LIVE IN NANDED</div>
+                  <div className="flex items-center gap-1.5 mt-0.5">
+                    <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
+                    <span className="text-green-400 text-xs">Active</span>
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section className="py-24 bg-white">
         <div className="container mx-auto px-4 md:px-8">
           <div className="bg-brand-dark rounded-3xl overflow-hidden shadow-2xl relative">
