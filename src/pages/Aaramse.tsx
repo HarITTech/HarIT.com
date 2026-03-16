@@ -12,6 +12,7 @@ import {
   Shield,
   Smartphone,
   Star,
+  Store,
   Users,
 } from 'lucide-react';
 import Button from '../components/Button';
@@ -282,6 +283,259 @@ const Aaramse: React.FC = () => {
               </ul>
             </motion.div>
           </div>
+        </div>
+      </section>
+
+      {/* Benefits Section */}
+      <section className="py-32 bg-gradient-to-b from-slate-50 via-white to-blue-50 relative overflow-hidden">
+        {/* Decorative elements */}
+        <div className="absolute top-20 left-10 w-72 h-72 bg-brand-orange/5 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-40 right-10 w-96 h-96 bg-indigo-400/5 rounded-full blur-3xl pointer-events-none" />
+        
+        <div className="container mx-auto px-4 md:px-8 relative z-10">
+          <motion.div
+            className="text-center max-w-4xl mx-auto mb-20"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={stagger}
+          >
+            <motion.div variants={fadeUp} custom={0}>
+              <div className="inline-flex items-center gap-2 px-4 py-2 mb-6 bg-brand-orange/10 border border-brand-orange/30 text-brand-orange rounded-full text-xs font-bold tracking-widest uppercase">
+                <Star size={16} className="fill-current" /> Why AaramSe Stands Out
+              </div>
+            </motion.div>
+            
+            <motion.h2 variants={fadeUp} custom={0.1} className="text-5xl md:text-6xl font-extrabold text-brand-dark mb-6 leading-tight">
+              Transforming Lives, <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-orange to-amber-500">One Queue at a Time</span>
+            </motion.h2>
+            
+            <motion.p variants={fadeUp} custom={0.2} className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+              From customers booking appointments at home to doctors managing entire operations, and store owners scaling their business—AaramSe delivers real value for everyone.
+            </motion.p>
+          </motion.div>
+
+          {/* Customer Benefits */}
+          <motion.div
+            className="mb-16 bg-gradient-to-br from-white to-orange-50/30 rounded-3xl overflow-hidden shadow-2xl border border-white relative group"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeUp}
+            custom={0.15}
+          >
+            {/* Gradient overlay on hover */}
+            <div className="absolute inset-0 bg-gradient-to-r from-brand-orange/0 to-brand-orange/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            
+            <div className="p-8 md:p-14 relative">
+              {/* Header with icon */}
+              <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 mb-12 pb-8 border-b border-gray-200/50">
+                <div className="flex items-center gap-5">
+                  <div className="relative">
+                    <div className="absolute inset-0 bg-gradient-to-br from-brand-orange to-orange-600 rounded-2xl blur-lg opacity-50 group-hover:opacity-75 transition-opacity" />
+                    <div className="relative w-20 h-20 rounded-2xl bg-gradient-to-br from-brand-orange to-orange-600 flex items-center justify-center shadow-lg">
+                      <Users className="text-white" size={36} strokeWidth={1.5} />
+                    </div>
+                  </div>
+                  <div>
+                    <h3 className="text-3xl md:text-4xl font-extrabold text-brand-dark">For Customers</h3>
+                    <p className="text-gray-600 text-lg mt-1">Book, track, and manage appointments with complete ease</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Benefits Grid */}
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+                {[
+                  { icon: Smartphone, title: 'Book From Home', desc: 'Schedule appointments anytime, anywhere without leaving your house' },
+                  { icon: Clock, title: 'Real-Time Queue Updates', desc: 'Know your exact position in the queue, updated live every second' },
+                  { icon: Bell, title: 'Smart Notifications', desc: 'Get timely alerts when your turn is approaching' },
+                  { icon: Shield, title: 'Digital Documents', desc: 'Access all medical/service documents on the app after completion' },
+                  { icon: Search, title: 'Complete History', desc: 'View all past appointments with detailed records and full history' },
+                  { icon: CheckCircle2, title: 'Discover Services', desc: 'Find verified clinics, stores, and service centers near you' },
+                ].map(({ icon: Icon, title, desc }, idx) => (
+                  <motion.div
+                    key={title}
+                    variants={fadeUp}
+                    custom={0.2 + idx * 0.05}
+                    className="bg-gradient-to-br from-orange-50 via-white to-orange-100/20 hover:from-orange-100 hover:via-orange-50 rounded-2xl p-6 border border-orange-200/60 shadow-sm hover:shadow-lg transition-all duration-300 group/card cursor-pointer"
+                  >
+                    <div className="flex items-start gap-4">
+                      <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-brand-orange/30 to-orange-400/10 flex items-center justify-center shrink-0 group-hover/card:scale-110 transition-transform">
+                        <Icon size={24} className="text-brand-orange" strokeWidth={1.5} />
+                      </div>
+                      <div className="flex-1">
+                        <h4 className="font-bold text-brand-dark text-base leading-tight">{title}</h4>
+                        <p className="text-gray-600 text-sm leading-relaxed mt-2">{desc}</p>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Hospital/Doctor Benefits */}
+          <motion.div
+            className="mb-16 bg-gradient-to-br from-white to-indigo-50/30 rounded-3xl overflow-hidden shadow-2xl border border-white relative group"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeUp}
+            custom={0.25}
+          >
+            <div className="absolute inset-0 bg-gradient-to-r from-indigo-500/0 to-indigo-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            
+            <div className="p-8 md:p-14 relative">
+              <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 mb-12 pb-8 border-b border-gray-200/50">
+                <div className="flex items-center gap-5">
+                  <div className="relative">
+                    <div className="absolute inset-0 bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-2xl blur-lg opacity-50 group-hover:opacity-75 transition-opacity" />
+                    <div className="relative w-20 h-20 rounded-2xl bg-gradient-to-br from-indigo-500 to-indigo-600 flex items-center justify-center shadow-lg">
+                      <BarChart3 className="text-white" size={36} strokeWidth={1.5} />
+                    </div>
+                  </div>
+                  <div>
+                    <h3 className="text-3xl md:text-4xl font-extrabold text-brand-dark">For Hospitals & Doctors</h3>
+                    <p className="text-gray-600 text-lg mt-1">Streamline operations, boost efficiency, and grow your practice</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+                {[
+                  { icon: Users, title: 'One-Click Patient View', desc: 'Access all patients and appointments with a single click' },
+                  { icon: BarChart3, title: 'Digital Queue Management', desc: 'Manage and control patient queues directly from the app' },
+                  { icon: Clock, title: 'Daily Slot Records', desc: 'Get complete records of all slots daily with detailed analytics' },
+                  { icon: Shield, title: 'Automate Operations', desc: 'Upgrade from manual work to automated, modern technology' },
+                  { icon: Smartphone, title: 'Business Growth', desc: 'Reach more patients, increase bookings, and grow faster' },
+                  { icon: CheckCircle2, title: 'Crowd Management', desc: 'Efficiently manage hospital traffic and maintain optimal flow' },
+                  { icon: QrCode, title: 'Digital Records', desc: 'Maintain complete digital records of every patient interaction' },
+                  { icon: Bell, title: 'Staff Coordination', desc: 'Coordinate with your team and manage appointments effortlessly' },
+                  { icon: Search, title: 'Performance Analytics', desc: 'Get insights into appointment trends and peak hours' },
+                ].map(({ icon: Icon, title, desc }, idx) => (
+                  <motion.div
+                    key={title}
+                    variants={fadeUp}
+                    custom={0.3 + idx * 0.04}
+                    className="bg-gradient-to-br from-indigo-50 via-white to-blue-100/20 hover:from-indigo-100 hover:via-indigo-50 rounded-2xl p-6 border border-indigo-200/60 shadow-sm hover:shadow-lg transition-all duration-300 group/card cursor-pointer"
+                  >
+                    <div className="flex items-start gap-4">
+                      <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-indigo-500/30 to-indigo-400/10 flex items-center justify-center shrink-0 group-hover/card:scale-110 transition-transform">
+                        <Icon size={24} className="text-indigo-600" strokeWidth={1.5} />
+                      </div>
+                      <div className="flex-1">
+                        <h4 className="font-bold text-brand-dark text-base leading-tight">{title}</h4>
+                        <p className="text-gray-600 text-sm leading-relaxed mt-2">{desc}</p>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Store Owner Benefits */}
+          <motion.div
+            className="mb-16 bg-gradient-to-br from-white to-green-50/30 rounded-3xl overflow-hidden shadow-2xl border border-white relative group"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeUp}
+            custom={0.35}
+          >
+            <div className="absolute inset-0 bg-gradient-to-r from-green-500/0 to-green-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            
+            <div className="p-8 md:p-14 relative">
+              <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 mb-12 pb-8 border-b border-gray-200/50">
+                <div className="flex items-center gap-5">
+                  <div className="relative">
+                    <div className="absolute inset-0 bg-gradient-to-br from-green-500 to-green-600 rounded-2xl blur-lg opacity-50 group-hover:opacity-75 transition-opacity" />
+                    <div className="relative w-20 h-20 rounded-2xl bg-gradient-to-br from-green-500 to-green-600 flex items-center justify-center shadow-lg">
+                      <Store className="text-white" size={36} strokeWidth={1.5} />
+                    </div>
+                  </div>
+                  <div>
+                    <h3 className="text-3xl md:text-4xl font-extrabold text-brand-dark">For Store & Service Owners</h3>
+                    <p className="text-gray-600 text-lg mt-1">Transform your retail and service operations into a modern business</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+                {[
+                  { icon: Bell, title: 'Eliminate Physical Queues', desc: 'Say goodbye to long waiting lines and chaos at your store' },
+                  { icon: BarChart3, title: 'Digital Queue System', desc: 'Manage customer queues digitally from a smart dashboard' },
+                  { icon: Users, title: 'Multi-Location Support', desc: 'Manage multiple store locations and branches seamlessly' },
+                  { icon: Clock, title: 'Business Growth', desc: 'Attract more customers and increase sales through better service' },
+                  { icon: Smartphone, title: 'Crowd Control', desc: 'Maintain optimal customer flow and reduce operational stress' },
+                  { icon: CheckCircle2, title: 'Digital Record Keeping', desc: 'Maintain accurate records of all transactions and customers' },
+                  { icon: Shield, title: 'Smart Scheduling', desc: 'Optimize your availability and manage peak hours effectively' },
+                  { icon: Search, title: 'Customer Insights', desc: 'Understand customer patterns and preferences with analytics' },
+                  { icon: QrCode, title: 'Easy Onboarding', desc: 'Get QR code for quick customer onboarding to your store' },
+                ].map(({ icon: Icon, title, desc }, idx) => (
+                  <motion.div
+                    key={title}
+                    variants={fadeUp}
+                    custom={0.4 + idx * 0.04}
+                    className="bg-gradient-to-br from-green-50 via-white to-emerald-100/20 hover:from-green-100 hover:via-green-50 rounded-2xl p-6 border border-green-200/60 shadow-sm hover:shadow-lg transition-all duration-300 group/card cursor-pointer"
+                  >
+                    <div className="flex items-start gap-4">
+                      <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-green-500/30 to-green-400/10 flex items-center justify-center shrink-0 group-hover/card:scale-110 transition-transform">
+                        <Icon size={24} className="text-green-600" strokeWidth={1.5} />
+                      </div>
+                      <div className="flex-1">
+                        <h4 className="font-bold text-brand-dark text-base leading-tight">{title}</h4>
+                        <p className="text-gray-600 text-sm leading-relaxed mt-2">{desc}</p>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Why AaramSe CTA */}
+          <motion.div
+            className="relative bg-gradient-to-r from-brand-orange via-orange-500 to-amber-400 rounded-3xl overflow-hidden shadow-2xl"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeUp}
+            custom={0.5}
+          >
+            {/* Premium background pattern */}
+            <div className="absolute inset-0 opacity-20 pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(255,255,255,0.8) 1px, transparent 1px)', backgroundSize: '24px 24px' }} />
+            
+            {/* Animated gradient overlay */}
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500" />
+            
+            <div className="absolute -top-40 -right-40 w-80 h-80 bg-white/10 rounded-full blur-3xl" />
+            <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-white/10 rounded-full blur-3xl" />
+            
+            <div className="relative p-10 md:p-16 text-center text-white z-10">
+              <motion.h3 variants={fadeUp} custom={0.55} className="text-3xl md:text-5xl font-extrabold mb-4 leading-tight">
+                Ready to Join the Queue Revolution?
+              </motion.h3>
+              
+              <motion.p variants={fadeUp} custom={0.6} className="text-lg md:text-xl text-white/95 mb-8 max-w-3xl mx-auto leading-relaxed">
+                Join thousands of satisfied customers and thriving businesses already transforming their operations with AaramSe. The future of queue management is here—and it starts today.
+              </motion.p>
+              
+              <motion.div variants={fadeUp} custom={0.65} className="flex flex-col sm:flex-row justify-center gap-4">
+                <a href={PLAY_STORE_URL} target="_blank" rel="noopener noreferrer" className="inline-block">
+                  <Button variant="primary" className="bg-white text-brand-orange hover:bg-gray-50 shadow-lg hover:shadow-xl transition-all text-base font-bold px-8">
+                    Download App Now <ArrowRight size={20} className="ml-2 inline" />
+                  </Button>
+                </a>
+                <Link to="/contact" className="inline-block">
+                  <Button variant="outline" className="border-2 border-white text-white hover:bg-white/20 shadow-lg hover:shadow-xl transition-all text-base font-bold px-8">
+                    Partner With Us
+                  </Button>
+                </Link>
+              </motion.div>
+            </div>
+          </motion.div>
         </div>
       </section>
 
