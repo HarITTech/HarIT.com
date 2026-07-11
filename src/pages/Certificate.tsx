@@ -1,10 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { X } from 'lucide-react';
+import { X, FileText, ShieldAlert } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { GlobalWorkerOptions, getDocument, type PDFDocumentProxy } from 'pdfjs-dist';
-import pdfWorker from 'pdfjs-dist/build/pdf.worker.min.mjs?url';
+import SEO from '../components/SEO';
 
-GlobalWorkerOptions.workerSrc = pdfWorker;
+// Set PDF.js worker from a reliable CDN matching package.json version 4.10.38
+GlobalWorkerOptions.workerSrc = 'https://unpkg.com/pdfjs-dist@4.10.38/build/pdf.worker.min.mjs';
 
 const PDF_URL = '/assets/Udyam-Registration-Certificate.pdf';
 
@@ -19,10 +20,23 @@ const Certificate = () => {
   const [hasRendered, setHasRendered] = useState(false);
 
   useEffect(() => {
+    // Disable main page scrolling
     const originalOverflow = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
+
+    // Prevent copy/paste, saving, and printing keyboard shortcuts
+    const handleKeyDown = (e: KeyboardEvent) => {
+      const isCmdOrCtrl = e.ctrlKey || e.metaKey;
+      if (isCmdOrCtrl && (e.key === 's' || e.key === 'p' || e.keyCode === 83 || e.keyCode === 80)) {
+        e.preventDefault();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown, true);
+
     return () => {
       document.body.style.overflow = originalOverflow;
+      window.removeEventListener('keydown', handleKeyDown, true);
     };
   }, []);
 
@@ -60,8 +74,8 @@ const Certificate = () => {
         if (!widthChanged && host.childElementCount > 0) {
           return;
         }
+        
         const deviceScale = Math.min(window.devicePixelRatio || 1, 1.5);
-
         lastWidthRef.current = containerWidth;
         host.innerHTML = '';
 
@@ -76,7 +90,7 @@ const Certificate = () => {
           canvas.height = Math.floor(scaledViewport.height * deviceScale);
           canvas.style.width = `${Math.floor(scaledViewport.width)}px`;
           canvas.style.height = `${Math.floor(scaledViewport.height)}px`;
-          canvas.className = 'block w-full';
+          canvas.className = 'block w-full pointer-events-none select-none';
 
           const context = canvas.getContext('2d');
           if (!context) {
@@ -102,8 +116,9 @@ const Certificate = () => {
           setHasRendered(true);
         }
       } catch (err) {
+        console.error(err);
         if (!isCancelled) {
-          setError('Unable to render the certificate. Please contact us for verification.');
+          setError('Unable to load registration certificate. Security measures active.');
           setHasRendered(false);
         }
       } finally {
@@ -147,48 +162,77 @@ const Certificate = () => {
   }, []);
 
   return (
-    <div className="fixed inset-0 z-[60] bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 md:p-8">
-      <div
-        className="w-full max-w-6xl 2xl:max-w-7xl bg-white rounded-2xl shadow-2xl border border-orange-100 overflow-hidden"
-        onContextMenu={(event) => event.preventDefault()}
-      >
-        <div className="flex items-start justify-between gap-4 px-6 py-4 border-b border-orange-100 bg-brand-bg">
+    <div 
+      className="fixed inset-0 z-[60] bg-brand-dark/95 backdrop-blur-md flex items-center justify-center p-4 md:p-8 select-none"
+      onContextMenu={(e) => {
+        e.preventDefault();
+        e.stopPropagation();
+      }}
+    >
+      <SEO 
+        title="MSME Udyam Registration Certificate" 
+        description="Verify HarIT Tech Solution's official Government of India MSME (Udyam) registration certificate." 
+      />
+      
+      <div className="w-full max-w-5xl h-[88vh] bg-white rounded-3xl shadow-2xl border border-orange-100 flex flex-col overflow-hidden animate-fade-in">
+        {/* Header bar */}
+        <div className="flex items-center justify-between px-6 py-5 border-b border-orange-100 bg-brand-bg shrink-0">
           <div>
-            <h1 className="text-xl md:text-2xl font-bold text-brand-dark">
-              MSME (Udyam) Registration Certificate
+            <h1 className="text-xl md:text-2xl font-bold text-brand-dark flex items-center gap-2">
+              <FileText className="text-brand-orange" size={24} />
+              MSME (Udyam) Certificate
             </h1>
-            <p className="text-xs text-gray-500">Displayed for verification only.</p>
+            <p className="text-xs text-gray-500">Government of India Registration Verification</p>
           </div>
-          <button
-            type="button"
-            onClick={() => navigate(-1)}
-            className="inline-flex items-center gap-2 text-sm font-semibold text-brand-dark hover:text-brand-orange transition-colors"
-            aria-label="Close certificate view"
-          >
-            <X size={18} />
-            Close
-          </button>
+          
+          <div className="flex items-center gap-3">
+            <span className="hidden md:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-orange-50 border border-orange-100 text-brand-orange text-xs font-bold">
+              <ShieldAlert size={14} /> Secured Canvas Viewer
+            </span>
+
+            <button
+              type="button"
+              onClick={() => navigate(-1)}
+              className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-bold bg-brand-dark text-white rounded-xl hover:bg-brand-orange transition-all duration-300"
+              aria-label="Close certificate view"
+            >
+              <X size={14} />
+              Close
+            </button>
+          </div>
         </div>
 
-        <div className="h-[52vh] sm:h-[56vh] md:h-[60vh] lg:h-[66vh] min-h-[400px] lg:min-h-[520px] overflow-y-scroll bg-neutral-900/95">
+        {/* Canvas PDF Render Container */}
+        <div className="flex-1 bg-neutral-900 overflow-y-auto relative">
           {isLoading && !error && !hasRendered && (
-            <div className="h-full w-full flex items-center justify-center text-sm text-gray-200">
-              Loading certificate...
+            <div className="absolute inset-0 flex items-center justify-center text-sm text-gray-200">
+              Initializing Secure Viewer...
             </div>
           )}
+          
           {error && (
-            <div className="h-full w-full flex items-center justify-center text-sm text-red-200">
+            <div className="absolute inset-0 flex items-center justify-center text-sm text-red-200 p-6 text-center">
               {error}
             </div>
           )}
+
+          {/* Canvas target wrapper. Disables right click context menu on all child elements */}
           <div
             ref={canvasHostRef}
-            className="w-full bg-white"
+            className="w-full bg-white select-none pointer-events-none"
+            onContextMenu={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+            }}
           />
         </div>
 
-        <div className="px-6 py-3 bg-white text-xs text-gray-500 border-t border-orange-100">
-          If the document does not render in your browser, please contact us for verification.
+        {/* Footer info bar */}
+        <div className="px-6 py-4 bg-brand-bg text-[10px] text-gray-500 border-t border-orange-100 shrink-0 flex flex-col sm:flex-row items-center justify-between gap-2">
+          <span>Udyam Registration Number: UDYAM-MH-20-XXXXXXX</span>
+          <span className="flex items-center gap-1 text-brand-orange font-semibold">
+            <ShieldAlert size={12} /> Printing, Saving & Right-Click Blocked
+          </span>
         </div>
       </div>
     </div>

@@ -18,6 +18,8 @@ const navLinks = [
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   const [scrolled, setScrolled]       = useState(false);
   const [mobileOpen, setMobileOpen]   = useState(false);
+  const [isLoadingRoute, setIsLoadingRoute] = useState(false);
+  const [loadingProgress, setLoadingProgress] = useState(0);
   const location = useLocation();
 
   const isHome = location.pathname === '/';
@@ -33,6 +35,28 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   useEffect(() => {
     setMobileOpen(false);
     window.scrollTo(0, 0);
+
+    // Trigger Top Loading Progress Bar Transition
+    setIsLoadingRoute(true);
+    setLoadingProgress(20);
+
+    const progressTimer = setTimeout(() => {
+      setLoadingProgress(75);
+    }, 60);
+
+    const completeTimer = setTimeout(() => {
+      setLoadingProgress(100);
+      const hideTimer = setTimeout(() => {
+        setIsLoadingRoute(false);
+        setLoadingProgress(0);
+      }, 150);
+      return () => clearTimeout(hideTimer);
+    }, 300);
+
+    return () => {
+      clearTimeout(progressTimer);
+      clearTimeout(completeTimer);
+    };
   }, [location]);
 
   /* ──────────────────────────────────────────────
@@ -68,6 +92,13 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
 
   return (
     <div className="flex flex-col min-h-screen bg-brand-bg font-sans text-brand-dark overflow-x-hidden">
+      {/* Route Change Progress Indicator Loader Strip */}
+      {isLoadingRoute && (
+        <div
+          className="fixed top-0 left-0 h-[3px] bg-gradient-to-r from-brand-orange to-amber-400 z-[9999] transition-all duration-300 ease-out"
+          style={{ width: `${loadingProgress}%` }}
+        />
+      )}
 
       {/* ════════════════════════════════════════
           NAVBAR

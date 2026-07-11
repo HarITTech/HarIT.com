@@ -3,6 +3,7 @@ import { Mail, Phone, MapPin, Send, Zap, Check } from "lucide-react";
 import Button from "../components/Button";
 import emailjs from "@emailjs/browser";
 import { motion } from "framer-motion";
+import SEO from "../components/SEO";
 
 type FormData = {
   name: string;
@@ -91,6 +92,10 @@ const Contact = () => {
 
   return (
     <div className="bg-brand-bg overflow-hidden">
+      <SEO 
+        title="Contact Our Team" 
+        description="Have a question or a custom development project in mind? Reach out to HarIT Tech Solution's engineering and business development team." 
+      />
       {/* ─── Premium Dark Hero ─── */}
       <section className="relative pt-32 pb-32 bg-brand-dark overflow-hidden">
         {/* Background Gradients & Glows */}

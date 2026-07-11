@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Check, Users, BarChart3, Star, ArrowRight, Zap } from 'lucide-react';
 import { motion } from 'framer-motion';
 import Button from '../components/Button';
+import SEO from '../components/SEO';
 import tnpImg from '../assets/TNP.png'; // Assuming it's the correct path based on previous file
 
 const fadeUp = {
@@ -18,6 +19,10 @@ const stagger = {
 const Solutions = () => {
   return (
     <div className="bg-brand-bg overflow-hidden">
+      <SEO 
+        title="Products & Solutions" 
+        description="Verify our ready-to-deploy platforms and custom products, including Training & Placement portals, roommate finding systems, and local e-commerce markets." 
+      />
       {/* ─── Premium Dark Hero ─── */}
       <section className="relative pt-28 pb-20 bg-brand-dark overflow-hidden">
         {/* Background Gradients & Glows */}

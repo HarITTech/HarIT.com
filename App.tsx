@@ -6,6 +6,7 @@ import About from './src/pages/About';
 import Services from './src/pages/Services';
 import Solutions from './src/pages/Solutions';
 import Contact from './src/pages/Contact';
+import Careers from './src/pages/Careers';
 import Privacy from './src/pages/Privacy';
 import Terms from './src/pages/Terms';
 import Certificate from './src/pages/Certificate';
@@ -13,6 +14,7 @@ import Aaramse from './src/pages/Aaramse';
 import AaramsePrivacy from './src/pages/AaramsePrivacy';
 import AaramseTerms from './src/pages/AaramseTerms';
 import AaramseRefund from './src/pages/AaramseRefund';
+import NotFound from './src/pages/NotFound';
 
 const App: React.FC = () => {
   return (
@@ -32,8 +34,9 @@ const App: React.FC = () => {
           <Route path="/aaramse/refund-policy" element={<AaramseRefund />} />
           <Route path="/msme-certificate" element={<Certificate />} />
           {/* Fallback route for demo purposes */}
-          <Route path="/careers" element={<Contact />} />
+          <Route path="/careers" element={<Careers />} />
           <Route path="/blog" element={<Home />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </Layout>
  

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Code, Cloud, Brain, PenTool, CheckCircle2, ArrowRight, Smartphone, Layers, Zap, Shield, TrendingUp, Users } from 'lucide-react';
 import { motion } from 'framer-motion';
 import Button from '../components/Button';
+import SEO from '../components/SEO';
 
 import imgWebMobile from '../assets/service_web_mobile.png';
 import imgCloud from '../assets/service_cloud_devops.png';
@@ -113,6 +114,10 @@ const Services: React.FC = () => {
 
   return (
     <div className="bg-brand-bg overflow-hidden">
+      <SEO 
+        title="Custom Software & Cloud Services" 
+        description="Explore our specialized services including Web & Mobile App Development, DevOps & Cloud Systems, AI & Machine Learning Integrations, and UI/UX Design." 
+      />
 
       {/* ─── HERO SECTION ─── */}
       <section className="relative pt-16 pb-20 overflow-hidden">

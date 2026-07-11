@@ -7,6 +7,7 @@ import {
 } from 'lucide-react';
 import { motion, useInView } from 'framer-motion';
 import Button from '../components/Button';
+import SEO from '../components/SEO';
 import heroImg from '../assets/home_hero_visual.png';
 import tnpImg from '../assets/TNP1.png';
 import aaramseDashboardImg from '../assets/aaramse/dashboard.jpg';
@@ -126,6 +127,10 @@ const projects = [
 const Home: React.FC = () => {
   return (
     <div className="overflow-hidden">
+      <SEO 
+        title="Smart IT Solutions That Ship & Scale" 
+        description="HarIT Tech Solution is a premier software development partner in India. We build custom development, cloud systems, training & placement portals, and scalable digital solutions." 
+      />
 
       {/* ════════════════════════════════════════
           HERO — 3D ANIMATED BACKGROUND
@@ -221,73 +226,220 @@ const Home: React.FC = () => {
               </motion.div>
             </motion.div>
 
-            {/* ── Right Visual (Senior UI/UX Composition) ── */}
+            {/* ── Right Visual — Premium Code Editor Composition ── */}
             <motion.div
               className="flex-1 w-full relative flex items-center justify-center p-4"
               initial={{ opacity: 0, x: 60, scale: 0.95 }}
               animate={{ opacity: 1, x: 0, scale: 1 }}
               transition={{ duration: 0.9, delay: 0.2, ease: 'easeOut' }}
             >
-              {/* Main composition container */}
-              <div className="relative w-full max-w-[600px] float-card">
-                
-                {/* 1. The Glass "Application" Window */}
-                <div className="glass-mockup rounded-[2rem] p-3 aspect-[4/3] relative z-10">
-                  {/* Title bar mimic */}
-                  <div className="flex items-center gap-1.5 mb-3 px-4">
-                    <div className="w-2.5 h-2.5 rounded-full bg-red-400/30" />
-                    <div className="w-2.5 h-2.5 rounded-full bg-amber-400/30" />
-                    <div className="w-2.5 h-2.5 rounded-full bg-green-400/30" />
-                    <div className="ml-2 text-[10px] text-gray-500 font-mono tracking-widest uppercase opacity-50">HarIT_Core_v2.0</div>
+              <div className="relative w-full max-w-[580px] float-card">
+
+                {/* ── 1. Main Code Editor Window ── */}
+                <div className="glass-mockup rounded-[2rem] overflow-hidden relative z-10" style={{ aspectRatio: '4/3' }}>
+
+                  {/* Editor chrome bar */}
+                  <div className="flex items-center gap-1.5 px-5 py-3 border-b border-white/10 bg-black/30">
+                    <div className="w-3 h-3 rounded-full bg-red-500/80" />
+                    <div className="w-3 h-3 rounded-full bg-amber-400/80" />
+                    <div className="w-3 h-3 rounded-full bg-green-400/80" />
+                    <div className="flex-1 mx-3 bg-white/10 rounded-full px-3 py-0.5 flex items-center gap-2">
+                      <div className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
+                      <span className="text-[9px] text-gray-500 font-mono tracking-wider">harIT.dev / dashboard</span>
+                    </div>
+                    <div className="text-[9px] text-gray-600 font-mono">harit_core.ts</div>
                   </div>
 
-                  {/* Inner Image Container */}
-                  <div className="relative rounded-[1.5rem] overflow-hidden w-full h-[calc(100%-30px)] bg-brand-dark">
-                    {/* The Premium Abstract Image */}
-                    <img
-                      src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?q=80&w=2070&auto=format&fit=crop"
-                      alt="HarIT AI Abstract Visualization"
-                      className="w-full h-full object-cover opacity-60 mix-blend-screen"
-                    />
-                    
-                    {/* Moving Scanner Overlay */}
-                    <div className="scanner-line" />
+                  {/* Editor body */}
+                  <div className="flex h-[calc(100%-46px)]">
 
-                    {/* Gradient internal glows */}
-                    <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-brand-dark via-brand-dark/40 to-transparent z-20" />
-                    <div className="absolute inset-0 ring-1 ring-white/10 rounded-[1.5rem] pointer-events-none z-30" />
+                    {/* Sidebar file tree */}
+                    <div className="w-28 border-r border-white/5 bg-black/20 py-3 px-2 flex-shrink-0 hidden lg:flex flex-col gap-1">
+                      <div className="text-[8px] text-gray-600 uppercase tracking-widest px-1 mb-2">Explorer</div>
+                      {['src/', '├ core.ts', '├ deploy.ts', '├ ai.agent.ts', '└ index.ts'].map((f, i) => (
+                        <div
+                          key={i}
+                          className={`text-[9px] font-mono px-1.5 py-0.5 rounded ${i === 1 ? 'bg-brand-orange/20 text-brand-orange' : 'text-gray-600'}`}
+                        >
+                          {f}
+                        </div>
+                      ))}
+                      <div className="mt-2 text-[8px] text-gray-600 uppercase tracking-widest px-1">Git</div>
+                      <div className="text-[9px] font-mono text-green-400 px-1.5 py-0.5">M core.ts</div>
+                      <div className="text-[9px] font-mono text-sky-400 px-1.5 py-0.5">A ai.agent.ts</div>
+                    </div>
 
-                    {/* Floating Code Snippets within the window */}
-                    <motion.div 
-                      className="absolute top-10 left-8 z-30 font-mono text-[10px] text-brand-orange/70 space-y-1"
-                      animate={{ y: [0, -5, 0] }}
-                      transition={{ duration: 3, repeat: Infinity }}
-                    >
-                      <div className="flex gap-2"><span className="text-gray-500">01</span><span>import {'{'} AI_Agent {'}'} from "harIT";</span></div>
-                      <div className="flex gap-2"><span className="text-gray-500">02</span><span>const agent = new AI_Agent();</span></div>
-                      <div className="flex gap-2 transition-opacity"><span className="text-gray-500">03</span><span className="animate-pulse">agent.optimize_scale();</span></div>
-                    </motion.div>
+                    {/* Code pane */}
+                    <div className="flex-1 p-4 font-mono text-[10px] leading-relaxed flex flex-col overflow-hidden">
+                      <div className="flex-1 space-y-[5px]">
+                        {([
+                          { ln: '01', tokens: [{ c: 'text-violet-400', t: 'import' }, { c: 'text-gray-300', t: ' { ' }, { c: 'text-sky-300', t: 'AI' }, { c: 'text-gray-500', t: ', ' }, { c: 'text-sky-300', t: 'Cloud' }, { c: 'text-gray-500', t: ', ' }, { c: 'text-sky-300', t: 'Deploy' }, { c: 'text-gray-300', t: ' }' }, { c: 'text-violet-400', t: ' from' }, { c: 'text-amber-300', t: " '@harit/core'" }], active: false },
+                          { ln: '02', tokens: [{ c: 'text-gray-700', t: '' }], active: false },
+                          { ln: '03', tokens: [{ c: 'text-gray-500', t: '// 🚀  Build & ship production software' }], active: false },
+                          { ln: '04', tokens: [{ c: 'text-violet-400', t: 'const' }, { c: 'text-sky-300', t: ' product' }, { c: 'text-gray-400', t: ' = ' }, { c: 'text-amber-300', t: 'new' }, { c: 'text-emerald-400', t: ' Deploy' }, { c: 'text-gray-300', t: '({' }], active: false },
+                          { ln: '05', tokens: [{ c: 'text-sky-300', t: '  stack' }, { c: 'text-gray-400', t: ':' }, { c: 'text-amber-300', t: " 'full-stack'" }, { c: 'text-gray-300', t: ',' }], active: false },
+                          { ln: '06', tokens: [{ c: 'text-sky-300', t: '  ai' }, { c: 'text-gray-400', t: ':' }, { c: 'text-emerald-400', t: ' true' }, { c: 'text-gray-300', t: ',' }], active: true },
+                          { ln: '07', tokens: [{ c: 'text-sky-300', t: '  scale' }, { c: 'text-gray-400', t: ':' }, { c: 'text-amber-300', t: " 'infinite'" }, { c: 'text-gray-300', t: ',' }], active: false },
+                          { ln: '08', tokens: [{ c: 'text-gray-300', t: '});' }], active: false },
+                          { ln: '09', tokens: [{ c: 'text-gray-700', t: '' }], active: false },
+                          { ln: '10', tokens: [{ c: 'text-emerald-400', t: 'product' }, { c: 'text-gray-300', t: '.' }, { c: 'text-sky-300', t: 'ship' }, { c: 'text-gray-300', t: '().' }, { c: 'text-sky-300', t: 'then' }, { c: 'text-gray-300', t: '(() => {' }], active: false },
+                          { ln: '11', tokens: [{ c: 'text-sky-300', t: '  console' }, { c: 'text-gray-300', t: '.' }, { c: 'text-amber-300', t: 'log' }, { c: 'text-gray-300', t: '(' }, { c: 'text-amber-300', t: "'✅ Live & Scaling!'" }, { c: 'text-gray-300', t: ');' }], active: false },
+                          { ln: '12', tokens: [{ c: 'text-gray-300', t: '});' }], active: false },
+                        ] as Array<{ ln: string; tokens: Array<{ c: string; t: string }>; active: boolean }>).map((line, i) => (
+                          <motion.div
+                            key={i}
+                            className={`flex gap-2 items-start rounded-sm ${line.active ? 'bg-brand-orange/10' : ''}`}
+                            initial={{ opacity: 0, x: -8 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ delay: 0.4 + i * 0.06, duration: 0.4 }}
+                          >
+                            <span className={`select-none w-3 text-right shrink-0 ${line.active ? 'text-brand-orange/60' : 'text-gray-700'}`}>{line.ln}</span>
+                            <span className="flex flex-wrap gap-x-0">
+                              {line.tokens.map((tok, j) => (
+                                <span key={j} className={tok.c}>{tok.t}</span>
+                              ))}
+                              {i === 11 && (
+                                <motion.span
+                                  className="inline-block w-1.5 h-3.5 bg-brand-orange ml-0.5 rounded-sm"
+                                  animate={{ opacity: [1, 0, 1] }}
+                                  transition={{ duration: 0.9, repeat: Infinity }}
+                                />
+                              )}
+                            </span>
+                          </motion.div>
+                        ))}
+                      </div>
+
+                      {/* Terminal strip */}
+                      <div className="mt-2 bg-black/60 rounded-xl p-2.5 border border-white/5 shrink-0">
+                        <div className="flex items-center gap-2 mb-1.5">
+                          <div className="flex gap-1">
+                            <div className="w-5 h-[1px] bg-gray-700" />
+                            <div className="w-3 h-[1px] bg-gray-700" />
+                          </div>
+                          <span className="text-[8px] text-gray-500 font-bold uppercase tracking-widest">Terminal</span>
+                        </div>
+                        <div className="space-y-1">
+                          <div className="flex items-center gap-1.5 text-[9px] font-mono text-gray-500">
+                            <span className="text-brand-orange">❯</span>
+                            <span>npm run deploy:prod</span>
+                          </div>
+                          <motion.div
+                            className="text-[9px] font-mono text-emerald-400"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ delay: 1.8, duration: 0.5 }}
+                          >
+                            ✓ Build complete in 3.2s · 0 errors · 🚀 Deployed
+                          </motion.div>
+                          <motion.div
+                            className="flex items-center gap-1.5 text-[9px] font-mono"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ delay: 2.2 }}
+                          >
+                            <span className="text-brand-orange">❯</span>
+                            <motion.span
+                              className="text-gray-400"
+                              animate={{ opacity: [1, 0, 1] }}
+                              transition={{ duration: 1, repeat: Infinity, delay: 2.5 }}
+                            >_</motion.span>
+                          </motion.div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
+
+                  {/* Glass ring */}
+                  <div className="absolute inset-0 ring-1 ring-white/10 rounded-[2rem] pointer-events-none z-20" />
+                  {/* Scanner line */}
+                  <div className="scanner-line" />
                 </div>
 
-                {/* 2. Extra Layer: Floating "Status" Widget */}
-                <motion.div 
-                  className="absolute -right-8 top-1/4 z-20 bg-white/5 backdrop-blur-2xl border border-white/10 rounded-2xl p-4 shadow-2xl hidden xl:block"
-                  style={{ transform: 'perspective(1000px) rotateY(-15deg)' }}
-                  animate={{ y: [0, 8, 0] }}
+                {/* ── 2. Floating: Uptime / Deploy Status Card (top-right) ── */}
+                <motion.div
+                  className="absolute -right-5 top-4 z-20 hidden xl:block"
+                  animate={{ y: [0, -8, 0] }}
                   transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
+                  style={{ perspective: '800px' }}
                 >
-                  <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 rounded-full bg-green-500 animate-ping" />
-                    <div className="text-[10px] text-gray-400 font-bold tracking-tighter uppercase whitespace-nowrap">System.Processing</div>
-                  </div>
-                  <div className="mt-2 h-1 w-24 bg-gray-800 rounded-full overflow-hidden">
-                    <motion.div className="h-full bg-brand-orange" animate={{ width: ['20%', '90%', '20%'] }} transition={{ duration: 4, repeat: Infinity }} />
+                  <div
+                    className="bg-white/8 backdrop-blur-2xl border border-white/15 rounded-2xl px-4 py-3 shadow-2xl min-w-[148px]"
+                    style={{ transform: 'rotateY(-14deg) rotateX(4deg)' }}
+                  >
+                    <div className="flex items-center gap-2 mb-2">
+                      <div className="w-2 h-2 rounded-full bg-green-400 animate-ping" />
+                      <span className="text-[9px] text-gray-400 font-bold uppercase tracking-widest">Uptime</span>
+                    </div>
+                    <div className="text-xl font-extrabold text-white leading-none mb-1.5">
+                      99.9<span className="text-brand-orange text-sm">%</span>
+                    </div>
+                    <div className="h-1.5 bg-white/10 rounded-full overflow-hidden">
+                      <motion.div
+                        className="h-full bg-gradient-to-r from-green-400 to-emerald-500 rounded-full"
+                        animate={{ width: ['88%', '99.9%', '88%'] }}
+                        transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+                      />
+                    </div>
+                    <div className="text-[8px] text-gray-600 mt-1.5 font-mono">last 30 days</div>
                   </div>
                 </motion.div>
 
-                {/* 3. Deep Background Glow for Composition Depth */}
+                {/* ── 3. Floating: Projects Bar-Chart Card (bottom-left) ── */}
+                <motion.div
+                  className="absolute -left-5 bottom-5 z-20 hidden xl:block"
+                  animate={{ y: [0, 7, 0] }}
+                  transition={{ duration: 4.5, repeat: Infinity, ease: 'easeInOut', delay: 1.2 }}
+                >
+                  <div className="bg-brand-dark/85 backdrop-blur-2xl border border-white/10 rounded-2xl px-4 py-3 shadow-2xl">
+                    <div className="text-[9px] text-gray-500 font-bold uppercase tracking-widest mb-1">Projects Shipped</div>
+                    <div className="flex items-end gap-1.5 mb-2">
+                      <span className="text-xl font-extrabold text-white">20</span>
+                      <span className="text-brand-orange text-xs font-bold mb-0.5">+ Delivered</span>
+                    </div>
+                    <div className="flex items-end gap-1">
+                      {[5, 8, 6, 10, 7, 9, 12].map((h, i) => (
+                        <motion.div
+                          key={i}
+                          className="w-2.5 rounded-t-sm"
+                          style={{
+                            background: i === 6
+                              ? 'linear-gradient(to top, #FF7A1A, #FBBF24)'
+                              : 'rgba(255,122,26,0.35)',
+                            height: h * 2.5,
+                          }}
+                          animate={{ height: [h * 2.5, h * 3.5, h * 2.5] }}
+                          transition={{ duration: 1.8 + i * 0.2, repeat: Infinity, ease: 'easeInOut', delay: i * 0.15 }}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                </motion.div>
+
+                {/* ── 4. Floating: Tech stack pills (mid-right) ── */}
+                <motion.div
+                  className="absolute -right-3 bottom-16 z-20 hidden xl:flex flex-col gap-1.5"
+                  animate={{ y: [0, -5, 0] }}
+                  transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }}
+                >
+                  {['React', 'Node.js', 'AI/ML'].map((tech, i) => (
+                    <motion.div
+                      key={tech}
+                      className="bg-white/8 backdrop-blur-xl border border-white/15 rounded-full px-2.5 py-1 text-[9px] font-bold text-gray-300 flex items-center gap-1.5 shadow-lg"
+                      initial={{ opacity: 0, x: 15 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 1.2 + i * 0.15 }}
+                    >
+                      <span className="w-1.5 h-1.5 rounded-full bg-brand-orange" />
+                      {tech}
+                    </motion.div>
+                  ))}
+                </motion.div>
+
+                {/* ── 5. Background depth glows ── */}
                 <div className="absolute -inset-10 bg-brand-orange/5 blur-[120px] -z-10 rounded-full" />
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-violet-500/8 blur-[100px] -z-10 rounded-full" />
+                <div className="absolute -bottom-8 left-1/4 w-40 h-40 bg-sky-500/8 blur-[60px] -z-10 rounded-full" />
               </div>
             </motion.div>
 
